@@ -1,10 +1,11 @@
-import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Landing from './pages/Landing/Landing';
 
-function App() {
+function App():JSX.Element {
   return (
-    <div className="App">
-      hi
-    </div>
+    <Routes>
+      <Route path="/" element={<Landing />} />
+    </Routes>
   );
 }
 
