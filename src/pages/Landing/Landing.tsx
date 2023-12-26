@@ -20,13 +20,19 @@ export default function Landing() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때만 이벤트 리스너를 추가
-  console.log(1 - ((scrollY - (window.innerHeight * 1)) / window.innerHeight) * 2);
 
-  const handlOpacity = (page:number, weight = 1) => {
-    if ((scrollY - (window.innerHeight * (page / 2))) / window.innerHeight < 0.5) {
-      return ((scrollY - (window.innerHeight * (page / 2))) / window.innerHeight) * (2 * weight);
+  const handlScrollDegree = (page = 1, weight = 1) => {
+    if (((scrollY
+      - (window.innerHeight * page)) / window.innerHeight) * (2) + 1 * weight < 0) return 0;
+
+    if (((scrollY
+    - (window.innerHeight * page)) / window.innerHeight) * (2) + 1 * weight < 1) {
+      return ((scrollY
+      - (window.innerHeight * page)) / window.innerHeight) * (2) + 1 * weight;
     }
-    return 1 - ((scrollY - (window.innerHeight * page)) / window.innerHeight) * (2 * weight);
+    // return ((scrollY - (window.innerHeight * (page / 2))) / window.innerHeight) * (2 * weight);
+    // return 1 - ((scrollY - (window.innerHeight * page)) / window.innerHeight) * (2 * weight);
+    return 1;
   };
 
   return (
@@ -46,7 +52,7 @@ export default function Landing() {
         </span>
         <Logo
           className={styles.section1__logo}
-          style={{ opacity: (1.2 - 2.5 * (scrollY / window.innerHeight)) }}
+          style={{ opacity: (1.2 - 2.5 * (scrollY / window.innerHeight)), transform: `rotate(${(scrollY / window.innerHeight) * 180}deg)` }}
         />
         <span
           className={styles.section1__front}
@@ -55,18 +61,63 @@ export default function Landing() {
           All-ganize
         </span>
       </div>
+
       <div
         className={styles.section2}
       >
-        <span style={{ opacity: handlOpacity(1) }}>
+        <span style={{ opacity: handlScrollDegree(1) }}>
           완벽한 시간 관리,
-
         </span>
-        <span style={{ opacity: handlOpacity(1) }}>
+        <span style={{ opacity: handlScrollDegree(1) }}>
           시간의 정보에 대한 완전한 이해로부터
 
         </span>
         <span />
+      </div>
+
+      <div className={styles.section3}>
+        <span style={{ opacity: handlScrollDegree(2) }}>
+          <span>
+            시공
+          </span>
+          <div className={styles.section3__sub}>
+            時+空
+          </div>
+
+        </span>
+        <div
+          className={styles.section3__phrase}
+          style={{ opacity: handlScrollDegree(2) === 1 ? 1 : 0 }}
+        >
+          시간은 공간의 흐름이고, 공간은 시간의 내용이다
+          <div>
+            시간과 공간은 본디 하나로 얽혀 있기에
+            {'\n'}
+            공간의 흐름이 결여된 시간은 결코 온전한 정보를 담지 못합니다.
+          </div>
+        </div>
+        <span
+          className={cn({
+            [styles.line]: true,
+            [styles.line__top]: true,
+          })}
+          style={{ height: `${20 * handlScrollDegree(2)}%` }}
+        />
+        <span
+          className={cn({
+            [styles.line]: true,
+            [styles.line__left]: true,
+          })}
+          style={{ height: `${20 * handlScrollDegree(2)}%` }}
+        />
+        <span
+          className={cn({
+            [styles.line]: true,
+            [styles.line__right]: true,
+          })}
+          style={{ height: `${20 * handlScrollDegree(2)}%` }}
+        />
+
       </div>
     </div>
   );
