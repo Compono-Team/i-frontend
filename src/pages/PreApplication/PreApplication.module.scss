@@ -1,0 +1,123 @@
+@mixin section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 100vw;
+  position: fixed;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  color:  #151617;
+  transition: 0.3s;
+  z-index: 999;
+  margin-left: 5%;
+  &__text {
+    color:  #151617;
+    font-family: Pretendard;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+  }
+}
+
+.template {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.arrowBtn {
+  margin-top: 50px;
+  cursor: pointer;
+
+  &--btn {
+    width: 46px;
+    height: 83.713px;
+    flex-shrink: 0;
+  }
+}
+
+.section1 {
+  @include section;
+  font-size: 140px;
+  font-weight: 800;
+  color: #151617;
+
+  &--section1 .top {
+    text-align: left;
+  }
+
+  &--section1 .bottom {
+    text-align: center;
+  }
+
+  .application {
+    width: 750px;
+    height: 158px;
+    flex-shrink: 0;
+
+    &__top {
+      color: #000;
+      text-align: center;
+      font-family: Pretendard;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-bottom: 16px;
+    }
+
+    &__bottom {
+      color: #000;
+      text-align: center;
+      font-family: Pretendard;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      margin-bottom: 24px;
+    }
+    &__input {
+      width: 750px;
+      height: 60px;
+      flex-shrink: 0;
+      background: var(--light-gray, #F1F1F1);
+      margin-bottom: 70px;
+    }
+  }
+}
+.terms {
+  width: 375px;
+  height: 24px;
+  flex-shrink: 0;
+
+  &__layout {
+    width: 275px;
+    height: 24px;
+    flex-shrink: 0;
+
+    &__checkbox {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      border: 1px solid var(--dark-gray, #505050);
+      background: #FFF;
+    }
+    &__text {
+      color: var(--dark-gray, #505050);
+      font-family: Pretendard;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+}
