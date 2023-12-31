@@ -50,7 +50,7 @@ export default function Landing() {
           All the time
         </span>
         <video className={styles.section1__logo} muted autoPlay loop width="100%" height="100%">
-          <source src="videos/landing.mov" type="video/mp4" />
+          <source src="/videos/landing.webm" type="video/webm" />
         </video>
         <span className={styles.section1__front}>
           All-ganize
@@ -179,7 +179,7 @@ export default function Landing() {
             이제, 당신의 치열했던 하루의 시간,
             {'\n'}
             {' '}
-            i가 알아서 정리해드릴게요.
+            AXYZ가 알아서 정리해드릴게요.
           </span>
           <div className={styles['section2-4__explain']}>
             <div className={styles['section2-4__explain--info']}>
@@ -205,8 +205,13 @@ export default function Landing() {
           <div className={styles['section3-1__phrase']}>
             사진 인식 기반 자동 일정화
             <div>
-              어쩌구 저쩌구 어쩌구 저쩌구
-              어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구
+              AXYZ의 혁신적인 알고리즘을 통해 완성된
+              {'\n'}
+              사진 인식 기반 자동 일정화는 사진 속 텍스트,
+              {'\n'}
+              장소, 시간, 그리고 이벤트의 성격까지 분석해,
+              {'\n'}
+              사용자만을 위한 일정을 디자인 합니다.
             </div>
           </div>
         </div>
@@ -215,10 +220,19 @@ export default function Landing() {
           style={{ opacity: handlScrollDegree(isMobile ? 5.5 : 6) }}
         >
           <div className={styles['section3-2__phrase']}>
-            외부 일정 크롤링 연동 기능
+            AXST, 바쁜 당신을 위한 최고의 동반자
             <div>
-              어쩌구 저쩌구 어쩌구 저쩌구
-              어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구
+              AXYZ의 AXST는 사용자가 인터넷 검색 없이
+              {'\n'}
+              자동으로 필요한 정보를 찾아
+              {'\n'}
+              일정에 편입하고 여러가지 도움을 주는
+              {'\n'}
+              당신만의 맞춤형 비서입니다.
+              {'\n'}
+              더욱 놀라운 점은 이 모든 것이
+              {'\n'}
+              사용자의 목소리만으로도 가능하다는 것이죠.
             </div>
           </div>
           <div className={styles['section3-2__photo']}>
@@ -232,9 +246,17 @@ export default function Landing() {
           <div className={styles['section3-3__photo']} />
           <div className={styles['section3-3__photo--container']} />
           <div className={styles['section3-3__phrase']}>
-            직관적이고 간편한 사용성
+            간편하게, 그러나 강력하게
             <div>
-              삶의 관리가 되어야 할 시간관리 서비스
+              AXYZ는 기존과 다른 방식의 연동성을 추구
+              {'\n'}
+              합니다. 그러나 기존보다 훨씬 간편하고 강
+              {'\n'}
+              력한 힘을 가지고 있죠. 모든 조작방식은 각
+              {'\n'}
+              각의 기기에 알맞는 형태로 설계되어 있어
+              {'\n'}
+              사용자의 편의성을 극대화합니다.
             </div>
           </div>
         </div>
@@ -244,7 +266,7 @@ export default function Landing() {
         >
           <div className={styles['section3-4__phrase']}>
             <img src={Logo} alt="logo" />
-            Horizon
+            AXYZ
             <span className={styles['section3-4__phrase--text']}>사전예약 하고 출시 알림을 받아보세요!</span>
           </div>
           <button className={styles['section3-4__reserve']} type="button">서비스 출시 알림 받기</button>
