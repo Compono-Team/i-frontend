@@ -1,9 +1,8 @@
 @use "sass:map";
 
 $media: (
-  mobile:430px,
-  tablet: 576px,
-  pc:1200px,
+  mobile:768px,
+  tablet: 1024px,
 );
 
 @mixin media-breakpoint-up($name, $breakpoints: $media) {

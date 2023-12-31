@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react';
-import { ReactComponent as Logo } from 'static/svg/logo.svg';
+import { useState, useEffect, useRef } from 'react';
 import cn from 'utils/ClassName';
+import useMediaQuery from 'hooks/useMediaQuery';
+import Mockup from 'static/image/mockup.png';
+import Logo from 'static/image/Logo/logo_white_trans.png';
 import styles from './Landing.module.scss';
 import TopNavigation from './components/TopNavigation';
 
 export default function Landing() {
+  const { isMobile } = useMediaQuery();
+  const firstRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState<number>(0);
 
   useEffect(() => {
@@ -12,113 +16,241 @@ export default function Landing() {
       setScrollY(window.scrollY);
     };
 
-    // 스크롤 이벤트에 대한 이벤트 리스너 추가
     window.addEventListener('scroll', handleScroll);
 
-    // 컴포넌트가 마운트 해제되면 이벤트 리스너 제거
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때만 이벤트 리스너를 추가
+  }, []);
 
   const handlScrollDegree = (page = 1, weight = 1) => {
     if (((scrollY
       - (window.innerHeight * page)) / window.innerHeight) * (2) + 1 * weight < 0) return 0;
 
     if (((scrollY
-    - (window.innerHeight * page)) / window.innerHeight) * (2) + 1 * weight < 1) {
+        - (window.innerHeight * page)) / window.innerHeight) * (2) + 1 * weight < 1) {
       return ((scrollY
-      - (window.innerHeight * page)) / window.innerHeight) * (2) + 1 * weight;
+            - (window.innerHeight * page)) / window.innerHeight) * (2) + 1 * weight;
     }
-    // return ((scrollY - (window.innerHeight * (page / 2))) / window.innerHeight) * (2 * weight);
-    // return 1 - ((scrollY - (window.innerHeight * page)) / window.innerHeight) * (2 * weight);
+
     return 1;
   };
 
   return (
     <div className={styles.template}>
       <TopNavigation />
-
       <div
         className={cn({
           [styles.section1]: true,
         })}
+        ref={firstRef}
+        style={{ transform: `translateY(${((window.scrollY === 0) ? 0 : -100)}%)` }}
       >
-        <span
-          className={styles.section1__back}
-          style={{ opacity: (1 - 2.5 * (scrollY / window.innerHeight)) }}
-        >
+        <span className={styles.section1__back}>
           All the time
         </span>
-        <Logo
-          className={styles.section1__logo}
-          style={{ opacity: (1.2 - 2.5 * (scrollY / window.innerHeight)), transform: `rotate(${(scrollY / window.innerHeight) * 180}deg)` }}
-        />
-        <span
-          className={styles.section1__front}
-          style={{ opacity: (1.4 - 2.5 * (scrollY / window.innerHeight)) }}
-        >
+        <video className={styles.section1__logo} muted autoPlay loop width="100%" height="100%">
+          <source src="videos/landing.mov" type="video/mp4" />
+        </video>
+        <span className={styles.section1__front}>
           All-ganize
         </span>
       </div>
 
-      <div
-        className={styles.section2}
-      >
-        <span style={{ opacity: handlScrollDegree(1) }}>
-          완벽한 시간 관리,
-        </span>
-        <span style={{ opacity: handlScrollDegree(1) }}>
-          시간의 정보에 대한 완전한 이해로부터
-
-        </span>
-        <span />
-      </div>
-
-      <div className={styles.section3}>
-        <span style={{ opacity: handlScrollDegree(2) }}>
-          <span>
-            시공
-          </span>
-          <div className={styles.section3__sub}>
-            時+空
-          </div>
-
-        </span>
+      <div className={styles.content}>
         <div
-          className={styles.section3__phrase}
-          style={{ opacity: handlScrollDegree(2) === 1 ? 1 : 0 }}
+          className={styles['section2-1']}
+          style={{
+            opacity: `${(window.scrollY === 0) ? 0 : 1}`,
+            transform: `translateY(${(window.scrollY === 0) ? 100 : 0}%)`,
+          }}
         >
-          시간은 공간의 흐름이고, 공간은 시간의 내용이다
-          <div>
-            시간과 공간은 본디 하나로 얽혀 있기에
+          <span>
+            완벽한 시간 관리,
+          </span>
+          <span>
+            시간의 정보에 대한 완전한 이해로부터
+
+          </span>
+          <span />
+        </div>
+
+        <div className={styles['section2-2']}>
+          <span style={{ opacity: handlScrollDegree(1) }}>
+            <span>
+              시공
+            </span>
+            <div className={styles['section2-2__sub']}>
+              時+空
+            </div>
+
+          </span>
+          <div
+            className={styles['section2-2__phrase']}
+            style={{ opacity: handlScrollDegree(0.8) === 1 ? 1 : 0 }}
+          >
+            시간은 공간의 흐름이고,
+            {isMobile && '\n'}
+            {' '}
+            공간은 시간의 내용이다
+            <div style={{ opacity: handlScrollDegree(1) === 1 ? 1 : 0 }}>
+              시간과 공간은 본디 하나로 얽혀 있기에
+              {'\n'}
+              공간의 흐름이 결여된 시간은 결코
+              {isMobile && '\n'}
+              {' '}
+              온전한 정보를 담지 못합니다.
+            </div>
+          </div>
+          <span
+            className={cn({
+              [styles.line]: true,
+              [styles.line__top]: true,
+            })}
+            style={{ height: `${10 * handlScrollDegree(0.7)}%` }}
+          />
+          <span
+            className={cn({
+              [styles.line]: true,
+              [styles.line__left]: true,
+            })}
+            style={{ width: `${20 * handlScrollDegree(1.3)}%` }}
+          />
+          <span
+            className={cn({
+              [styles.line]: true,
+              [styles.line__right]: true,
+            })}
+            style={{ width: `${20 * handlScrollDegree(1.3)}%` }}
+          />
+        </div>
+
+        <div className={styles['section2-3']}>
+          <span style={{
+            opacity: handlScrollDegree(1.7),
+            justifyContent: 'flex-start',
+          }}
+          >
+            <span>
+              시간
+            </span>
+            <div className={styles['section2-3__sub']}>
+              時+間
+            </div>
+
+          </span>
+
+          <div
+            className={styles['section2-3__phrase']}
+            style={{ opacity: handlScrollDegree(1.5) === 1 ? 1 : 0 }}
+          >
+            시간은
+            {' '}
+            <span>{'\'시점\''}</span>
+            과
+            {' '}
+            <span>{'\'사이\''}</span>
+            에
+            {' '}
+            {isMobile && '\n'}
+            의해 정의된다
+            <div style={{ opacity: handlScrollDegree(1.7) === 1 ? 1 : 0 }}>
+              시점과 사이를 이어 하루가 되고,
+              {'\n'}
+              한 주, 한 달, 한 해, 그 너머의 시간에 이르러
+              {isMobile && '\n'}
+              {' '}
+              하나의 시선이 완성됩니다.
+            </div>
+          </div>
+          <span
+            className={cn({
+              [styles.line]: true,
+              [styles.line__bottom]: true,
+            })}
+            style={{ height: `${20 * handlScrollDegree(2.5)}%` }}
+          />
+        </div>
+        <div
+          className={styles['section2-4']}
+          style={{ opacity: handlScrollDegree(2.5) }}
+        >
+          <span>
+            이제, 당신의 치열했던 하루의 시간,
             {'\n'}
-            공간의 흐름이 결여된 시간은 결코 온전한 정보를 담지 못합니다.
+            {' '}
+            i가 알아서 정리해드릴게요.
+          </span>
+          <div className={styles['section2-4__explain']}>
+            <div className={styles['section2-4__explain--info']}>
+              <img src={Mockup} alt="" />
+            </div>
           </div>
         </div>
-        <span
-          className={cn({
-            [styles.line]: true,
-            [styles.line__top]: true,
-          })}
-          style={{ height: `${20 * handlScrollDegree(2)}%` }}
-        />
-        <span
-          className={cn({
-            [styles.line]: true,
-            [styles.line__left]: true,
-          })}
-          style={{ height: `${20 * handlScrollDegree(2)}%` }}
-        />
-        <span
-          className={cn({
-            [styles.line]: true,
-            [styles.line__right]: true,
-          })}
-          style={{ height: `${20 * handlScrollDegree(2)}%` }}
-        />
 
+        <div
+          className={styles.section3}
+          style={{ opacity: handlScrollDegree(3.5) }}
+        >
+          모든 것이 하나로
+          {'\n'}
+          하나에서 시작되는 모든 것
+        </div>
+
+        <div
+          className={styles['section3-1']}
+          style={{ opacity: handlScrollDegree(isMobile ? 4.5 : 5) }}
+        >
+          <div className={styles['section3-1__photo']}>사진</div>
+          <div className={styles['section3-1__phrase']}>
+            사진 인식 기반 자동 일정화
+            <div>
+              어쩌구 저쩌구 어쩌구 저쩌구
+              어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구
+            </div>
+          </div>
+        </div>
+        <div
+          className={styles['section3-2']}
+          style={{ opacity: handlScrollDegree(isMobile ? 5.5 : 6) }}
+        >
+          <div className={styles['section3-2__phrase']}>
+            외부 일정 크롤링 연동 기능
+            <div>
+              어쩌구 저쩌구 어쩌구 저쩌구
+              어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구
+            </div>
+          </div>
+          <div className={styles['section3-2__photo']}>
+            <div className={styles['section3-2__photo--container']} />
+          </div>
+        </div>
+        <div
+          className={styles['section3-3']}
+          style={{ opacity: handlScrollDegree(isMobile ? 6.5 : 7) }}
+        >
+          <div className={styles['section3-3__photo']} />
+          <div className={styles['section3-3__photo--container']} />
+          <div className={styles['section3-3__phrase']}>
+            직관적이고 간편한 사용성
+            <div>
+              삶의 관리가 되어야 할 시간관리 서비스
+            </div>
+          </div>
+        </div>
+        <div
+          className={styles['section3-4']}
+          style={{ opacity: handlScrollDegree(isMobile ? 7.5 : 8) }}
+        >
+          <div className={styles['section3-4__phrase']}>
+            <img src={Logo} alt="logo" />
+            Horizon
+            <span className={styles['section3-4__phrase--text']}>사전예약 하고 출시 알림을 받아보세요!</span>
+          </div>
+          <button className={styles['section3-4__reserve']} type="button">서비스 출시 알림 받기</button>
+        </div>
       </div>
     </div>
+
   );
 }
