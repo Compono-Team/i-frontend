@@ -2,29 +2,29 @@ import React, { useState } from 'react';
 import Input from './Input';
 import styles from '../PreApplication.module.scss';
 import { InputText } from '../type/type';
-// import Terms from './Terms';
+import Terms from './Terms';
 
 export default function ApplicationPage() {
   const [stage, setState] = useState<number>(4);
   const [inputText, setInputText] = useState<InputText>({
     name: '', number: '', email: '', todo: '',
   });
-  // const [isTerms, setTerms] = useState<boolean>(false);
+  const [isTerms, setTerms] = useState<boolean>(false);
 
   const onRegNextStop = (step : number, text : string) : boolean => {
     let success = false;
     if (step === 1) {
-      success = /^[가-힣a-zA-Z0-9]{2,}$/.test(text);
+      success = /^[가-힣a-zA-Z0-9]{2,}$/.test(text) || stage > 0;
     }
     if (step === 2) {
       const regPhoneNumber = /^(010|011)-(\d{4})-(\d{4})$/;
       const phoneNumber = text.replace(regPhoneNumber, '$1$2$3');
 
-      success = /^(010|011)\d{8}$/.test(phoneNumber);
+      success = /^(010|011)\d{8}$/.test(phoneNumber) || stage > 1;
     }
     if (step === 3) {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      success = emailRegex.test(text);
+      success = emailRegex.test(text) || stage > 2;
     }
     return success;
   };
@@ -70,7 +70,10 @@ export default function ApplicationPage() {
           && (
           <>
             <Input step={4} placeholder="하고 싶은말" inputText={inputText} nextStage={nextStage} />
-            {/* <Terms isTerms={isTerms} setTerms={setTerms} /> */}
+            <Terms isTerms={isTerms} setTerms={setTerms} />
+            <button className={styles.summitBtn}>
+              <div className={styles.summitBtn__text}>SUBMIT</div>
+            </button>
           </>
           )}
     </div>

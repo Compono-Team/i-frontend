@@ -16,8 +16,8 @@ export default function Terms(props : Props) {
         <div className={styles.terms__layout__text}>
           [필수] 개인정보 활용 수집동의
         </div>
+        <div className={styles.terms__layout__text2}>자세히 보기</div>
       </div>
     </div>
-
   );
 }
