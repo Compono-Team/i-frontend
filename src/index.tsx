@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-ReactGA.initialize('G-VC4D5KC2VH', { debug: true });
+ReactGA.initialize('G-VC4D5KC2VH');
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
