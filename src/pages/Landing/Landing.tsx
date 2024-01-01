@@ -3,7 +3,7 @@ import cn from 'utils/ClassName';
 import useMediaQuery from 'hooks/useMediaQuery';
 import Logo from 'static/image/Logo/logo_white_trans.png';
 import LandingWeb from 'static/image/Landing/landing_web.png';
-import LandingMobile from 'static/image/Landing/landing_mobile.png';
+import LandingWidget from 'static/image/Landing/landing_widget.png';
 import LandingCrawling from 'static/image/Landing/landing_crawling.png';
 import LandingPhoto from 'static/image/Landing/landing_photo.png';
 import LandingList from 'static/image/Landing/landing_list.png';
@@ -14,6 +14,8 @@ import TopNavigation from './components/TopNavigation';
 
 export default function Landing() {
   const { isMobile } = useMediaQuery();
+  const [slideIndex, setSlideIndex] = useState<number>(0);
+  console.log('slideIndex:', slideIndex);
   const firstRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState<number>(0);
 
@@ -21,11 +23,13 @@ export default function Landing() {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
+    const intervalId = setInterval(() => setSlideIndex((prev) => (prev + 1) % 3), 4000);
 
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      clearInterval(intervalId);
     };
   }, []);
 
@@ -52,10 +56,10 @@ export default function Landing() {
         ref={firstRef}
         style={{ transform: `translateY(${((window.scrollY === 0) ? 0 : -100)}%)` }}
       >
-        <span className={styles.section1__back}>
+        <span>
           All the time
         </span>
-        <video className={styles.section1__logo} muted autoPlay loop width="100%" height="100%">
+        <video className={styles.section1__logo} muted autoPlay loop>
           <source src="/videos/landing.webm" type="video/webm" />
         </video>
         <span className={styles.section1__front}>
@@ -189,9 +193,9 @@ export default function Landing() {
           </span>
           <div className={styles['section2-4__explain']}>
             <div className={styles['section2-4__explain--info']}>
-              <img src={LandingMain} alt="" />
-              <img src={LandingSummary} alt="" />
-              <img src={LandingList} alt="" />
+              <img style={{ opacity: !isMobile || slideIndex === 0 ? 1 : 0 }} src={LandingMain} alt="main" />
+              <img style={{ opacity: !isMobile || slideIndex === 1 ? 1 : 0 }} src={LandingList} alt="list" />
+              <img style={{ opacity: !isMobile || slideIndex === 2 ? 1 : 0 }} src={LandingSummary} alt="summary" />
             </div>
           </div>
         </div>
@@ -258,7 +262,7 @@ export default function Landing() {
         >
           <div className={styles['section3-3__photo']}>
             <img className={styles['section3-3__photo--web']} src={LandingWeb} alt="web" />
-            <img className={styles['section3-3__photo--mobile']} src={LandingMobile} alt="mobile" />
+            <img className={styles['section3-3__photo--mobile']} src={LandingWidget} alt="mobile" />
           </div>
           <div className={styles['section3-3__phrase']}>
             간편하게, 그러나 강력하게

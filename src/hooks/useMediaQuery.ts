@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const MOBILE_MEDIA_QUERY = '(max-width: 576px)';
+const MOBILE_MEDIA_QUERY = '(max-width: 768px)';
 
 const useMediaQuery = () => {
   const [matches, setMatches] = useState(() => window.matchMedia(MOBILE_MEDIA_QUERY).matches);
