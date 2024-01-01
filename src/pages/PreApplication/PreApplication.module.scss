@@ -170,6 +170,16 @@
   position: relative;
   width: 348px;
   margin-top: 60px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #000000;
+    color: #ffffff;
+
+    .summitBtn__text {
+      color: #ffffff;
+    }
+  }
 
   &__text {
     color: #000000;

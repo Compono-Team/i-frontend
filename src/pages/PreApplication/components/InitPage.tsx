@@ -11,7 +11,7 @@ export default function InitPage(props : Props) {
   return (
     <>
       <div className={styles.logo}>
-        <div className={styles.logo__text}>Logo</div>
+        <div className={styles.logo__text}> </div>
       </div>
       <div
         className={styles.section1}
