@@ -1,8 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import cn from 'utils/ClassName';
 import useMediaQuery from 'hooks/useMediaQuery';
-import Mockup from 'static/image/mockup.png';
 import Logo from 'static/image/Logo/logo_white_trans.png';
+import LandingWeb from 'static/image/Landing/landing_web.png';
+import LandingMobile from 'static/image/Landing/landing_mobile.png';
+import LandingCrawling from 'static/image/Landing/landing_crawling.png';
+import LandingPhoto from 'static/image/Landing/landing_photo.png';
+import LandingList from 'static/image/Landing/landing_list.png';
+import LandingMain from 'static/image/Landing/landing_main.png';
+import LandingSummary from 'static/image/Landing/landing_summary.png';
 import styles from './Landing.module.scss';
 import TopNavigation from './components/TopNavigation';
 
@@ -183,7 +189,9 @@ export default function Landing() {
           </span>
           <div className={styles['section2-4__explain']}>
             <div className={styles['section2-4__explain--info']}>
-              <img src={Mockup} alt="" />
+              <img src={LandingMain} alt="" />
+              <img src={LandingSummary} alt="" />
+              <img src={LandingList} alt="" />
             </div>
           </div>
         </div>
@@ -201,16 +209,21 @@ export default function Landing() {
           className={styles['section3-1']}
           style={{ opacity: handlScrollDegree(isMobile ? 4.5 : 5) }}
         >
-          <div className={styles['section3-1__photo']}>사진</div>
+          <div className={styles['section3-1__photo']}>
+            <img src={LandingPhoto} alt="landing_photo" />
+          </div>
           <div className={styles['section3-1__phrase']}>
-            사진 인식 기반 자동 일정화
+            일상의 순간, 그 순간을 일정으로.
             <div>
               AXYZ의 혁신적인 알고리즘을 통해 완성된
               {'\n'}
-              사진 인식 기반 자동 일정화는 사진 속 텍스트,
+              {'\'사진 인식 기반 자동 일정화\''}
+              는 사진 속 텍스트,
               {'\n'}
+              {' '}
               장소, 시간, 그리고 이벤트의 성격까지 분석해,
               {'\n'}
+              {' '}
               사용자만을 위한 일정을 디자인 합니다.
             </div>
           </div>
@@ -236,15 +249,17 @@ export default function Landing() {
             </div>
           </div>
           <div className={styles['section3-2__photo']}>
-            <div className={styles['section3-2__photo--container']} />
+            <img src={LandingCrawling} alt="crawling" />
           </div>
         </div>
         <div
           className={styles['section3-3']}
           style={{ opacity: handlScrollDegree(isMobile ? 6.5 : 7) }}
         >
-          <div className={styles['section3-3__photo']} />
-          <div className={styles['section3-3__photo--container']} />
+          <div className={styles['section3-3__photo']}>
+            <img className={styles['section3-3__photo--web']} src={LandingWeb} alt="web" />
+            <img className={styles['section3-3__photo--mobile']} src={LandingMobile} alt="mobile" />
+          </div>
           <div className={styles['section3-3__phrase']}>
             간편하게, 그러나 강력하게
             <div>
