@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import cn from 'utils/ClassName';
 import useMediaQuery from 'hooks/useMediaQuery';
 import Logo from 'static/image/Logo/logo_white_trans.png';
+import namelogo from 'static/image/Logo/logo_phrase_trans.png';
 import LandingWeb from 'static/image/Landing/landing_web.png';
 import LandingWidget from 'static/image/Landing/landing_widget.png';
 import LandingCrawling from 'static/image/Landing/landing_crawling.png';
@@ -288,7 +289,7 @@ export default function Landing() {
         >
           <div className={styles['section3-4__phrase']}>
             <img src={Logo} alt="logo" />
-            AXYZ
+            <img src={namelogo} alt="logo" />
             <span className={styles['section3-4__phrase--text']}>사전예약 하고 출시 알림을 받아보세요!</span>
           </div>
           <button className={styles['section3-4__reserve']} type="button">서비스 출시 알림 받기</button>
