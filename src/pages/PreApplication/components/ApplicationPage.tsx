@@ -3,11 +3,12 @@ import Input from './Input';
 import styles from '../PreApplication.module.scss';
 import { InputText } from '../type/type';
 import Terms from './Terms';
+import { onRegReservation } from '../api/apis';
 
 export default function ApplicationPage() {
-  const [stage, setState] = useState<number>(1);
+  const [stage, setState] = useState<number>(4);
   const [inputText, setInputText] = useState<InputText>({
-    name: '', number: '', email: '', todo: '',
+    name: '', phoneNumber: '', email: '', expectation: '',
   });
   const [isTerms, setTerms] = useState<boolean>(false);
 
@@ -29,7 +30,8 @@ export default function ApplicationPage() {
     return success;
   };
 
-  const nextStage = (e : React.ChangeEvent<HTMLInputElement>, step : number) => {
+  const nextStage = (e : React.ChangeEvent<HTMLTextAreaElement>
+  | React.ChangeEvent<HTMLInputElement>, step : number) => {
     const success = onRegNextStop(step, e.target.value);
     if (step === 1) {
       setInputText((prev) => ({
@@ -40,7 +42,7 @@ export default function ApplicationPage() {
     if (step === 2) {
       setInputText((prev) => ({
         ...prev,
-        number: e.target.value,
+        phoneNumber: e.target.value,
       }));
     }
     if (step === 3) {
@@ -52,26 +54,49 @@ export default function ApplicationPage() {
     if (step === 4) {
       setInputText((prev) => ({
         ...prev,
-        todo: e.target.value,
+        expectation: e.target.value,
       }));
     }
     if (success && step === stage) setState(step + 1);
   };
 
+  const onClickSummit = () => {
+    try {
+      onRegReservation(inputText).then((res) => {
+        console.log('res', res);
+        const response = res.data;
+        console.log('response', response);
+      });
+    } catch (e) {
+      console.log('e', e);
+    }
+  };
+
   return (
     <div
       className={styles.section1}
-      style={{ height: stage > 0 ? `${100 + (stage + 30)}vh` : '100vh' }}
     >
-      {stage > 0 && <Input step={1} placeholder="이름을 작성해 주세요" inputText={inputText} nextStage={nextStage} />}
-      {stage > 1 && <Input step={2} placeholder="연락처를 입력해 주세요" inputText={inputText} nextStage={nextStage} />}
-      {stage > 2 && <Input step={3} placeholder="이메일을 입력해 주세요" inputText={inputText} nextStage={nextStage} />}
+      <svg width="80" height="50" viewBox="0 0 80 50" fill="none" style={{ marginBottom: '15px' }} xmlns="http://www.w3.org/2000/svg">
+        <g clipPath="url(#clip0_403_127)">
+          <path d="M39.9646 24.7221L0 0H79.928L39.9646 24.7221Z" fill="black" />
+          <path d="M39.9646 24.7216L0 49.4436H79.928L39.9646 24.7216Z" fill="black" />
+          <path d="M80 24.7221L55.2299 9.44287L0 24.7221L24.698 40.0013L80 24.7221Z" fill="black" />
+        </g>
+        <defs>
+          <clipPath id="clip0_403_127">
+            <rect width="80" height="49.4441" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+      {stage > 0 && <Input step={1} placeholder="* 이름을 작성해 주세요 :)  ex. 이창중" inputText={inputText} nextStage={nextStage} />}
+      {stage > 1 && <Input step={2} placeholder="* 연락처를 작성해 주세요 :) ex. 010-XXXX-XXXX" inputText={inputText} nextStage={nextStage} />}
+      {stage > 2 && <Input step={3} placeholder="* 이메일을 작성해 주세요 :) ex. ot3233@naver.com" inputText={inputText} nextStage={nextStage} />}
       {stage > 3
           && (
           <>
-            <Input step={4} placeholder="하고 싶은말" inputText={inputText} nextStage={nextStage} />
+            <Input step={4} placeholder="하고 싶은 말을 작성해 주세요. (선택사항)" inputText={inputText} nextStage={nextStage} />
             <Terms isTerms={isTerms} setTerms={setTerms} />
-            <button className={styles.summitBtn}>
+            <button type="button" className={styles.summitBtn} onClick={onClickSummit}>
               <div className={styles.summitBtn__text}>SUBMIT</div>
             </button>
           </>

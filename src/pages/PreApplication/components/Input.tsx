@@ -5,7 +5,8 @@ import { InputText } from '../type/type';
 interface Props {
   step : number
   placeholder : string;
-  nextStage : (e: React.ChangeEvent<HTMLInputElement>, step: number)=>void;
+  nextStage : (e: React.ChangeEvent<HTMLTextAreaElement>
+  | React.ChangeEvent<HTMLInputElement>, step: number)=>void;
   inputText : InputText;
 }
 
@@ -19,23 +20,36 @@ Input(props : Props) {
 
   return (
     <>
+      {step === 1
+      && (
       <span
         className={styles.application__top}
       >
-        {`Q.${step}`}
+        사전 신청 정보
       </span>
-      <span
-        className={styles.application__bottom}
-      >
-        {placeholder}
-      </span>
-      <input
-        value={text}
-        className={step !== 4 ? styles.application__input : styles.application__textarea}
-        onChange={(e) => nextStage(e, step)}
-        onKeyDown={(e) => { console.log('keydown', e); }}
-        onBlur={(e) => { console.log('blur', e); }}
-      />
+      )}
+      {step !== 4
+        ? (
+          <input
+            value={text}
+            placeholder={placeholder}
+            className={styles.application__input}
+            style={{ textAlign: text.length > 0 && step === 4 ? 'left' : 'center' }}
+            maxLength={50}
+            onChange={(e) => nextStage(e, step)}
+            onBlur={(e) => { console.log('blur', e); }}
+          />
+        )
+        : (
+          <textarea
+            value={text}
+            placeholder={placeholder}
+            className={styles.application__textarea}
+            style={{ textAlign: text.length > 0 ? 'left' : 'center' }}
+            maxLength={200}
+            onChange={(e) => nextStage(e, step)}
+          />
+        )}
     </>
   );
 }

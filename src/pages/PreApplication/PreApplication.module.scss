@@ -65,39 +65,49 @@
     flex-shrink: 0;
 
     &__top {
-      color: #000;
+      color: #000000;
       text-align: center;
       font-family: Pretendard;
-      font-size: 24px;
+      font-size: 48px;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
-      margin-bottom: 16px;
+      margin-bottom: 30px;
     }
 
     &__bottom {
-      color: #000;
+      color: #404040;
       text-align: center;
       font-family: Pretendard;
       font-size: 24px;
       font-style: normal;
-      font-weight: 600;
+      font-weight: 400;
       line-height: normal;
       margin-bottom: 24px;
     }
     &__input {
       width: 750px;
       height: 60px;
+      text-align: center;
       flex-shrink: 0;
       background-color: #f0f0f0;
-      margin-bottom: 70px;
+      margin-bottom: 20px;
+      border: none;
+      outline: none;
     }
+    // 20 20 마진 입력시에
     &__textarea {
       width: 750px;
       height: 120px;
+      text-align: left;
       flex-shrink: 0;
+      font-family: "Pretendard-Regular", Helvetica;
       background-color: #f0f0f0;
-      margin-bottom: 70px;
+      line-height: 20px;
+      margin-bottom: 20px;
+      border: none;
+      outline: none;
+      resize: none;
     }
   }
 }
@@ -174,17 +184,79 @@
     top: 17px;
     white-space: nowrap;
   }
-  //&:hover {
-  //  color: #FFFFFF;
-  //  font-family: "Pretendard-SemiBold", Helvetica;
-  //  font-size: 25.5px;
-  //  font-weight: 600;
-  //  left: 125px;
-  //  letter-spacing: 0;
-  //  line-height: 40.5px;
-  //  position: absolute;
-  //  text-align: center;
-  //  top: 17px;
-  //  white-space: nowrap;
-  //}
+}
+
+.frame {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 480px;
+  justify-content: space-around;
+  position: relative;
+
+  &__rectangle {
+    background-color: #ffffff;
+    border-radius: 19px;
+    height: 480px;
+    position: relative;
+    width: 664px;
+  }
+
+  &__group {
+    height: 289px;
+    left: 99px;
+    position: absolute;
+    top: 96px;
+    width: 471px;
+  }
+
+  &__compono {
+    color: #7b7b7b;
+    font-family: "Pretendard-Medium", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 118px;
+    width: 465px;
+  }
+
+  &__text {
+    color: var(--dark);
+    font-family: "Pretendard-SemiBold", Helvetica;
+    font-size: 30px;
+    font-weight: 600;
+    left: 122px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+  }
+
+  &__div {
+    color: #434446;
+    font-family: "Pretendard-SemiBold", Helvetica;
+    font-size: 18px;
+    font-weight: 600;
+    left: 26px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 52px;
+    width: 413px;
+  }
+
+  &__img {
+    height: 16px;
+    left: 604px;
+    position: absolute;
+    top: 44px;
+    width: 16px;
+  }
 }
