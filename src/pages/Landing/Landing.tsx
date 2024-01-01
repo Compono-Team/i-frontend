@@ -54,7 +54,10 @@ export default function Landing() {
           [styles.section1]: true,
         })}
         ref={firstRef}
-        style={{ transform: `translateY(${((window.scrollY === 0) ? 0 : -100)}%)` }}
+        style={{
+          transform: `translateY(${((window.scrollY === 0) ? 0 : -100)}%)`,
+          opacity: window.scrollY === 0 ? 1 : 0,
+        }}
       >
         <span>
           All the time
