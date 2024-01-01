@@ -31,7 +31,7 @@ Input(props : Props) {
       </span>
       <input
         value={text}
-        className={styles.application__input}
+        className={step !== 4 ? styles.application__input : styles.application__textarea}
         onChange={(e) => nextStage(e, step)}
         onKeyDown={(e) => { console.log('keydown', e); }}
         onBlur={(e) => { console.log('blur', e); }}

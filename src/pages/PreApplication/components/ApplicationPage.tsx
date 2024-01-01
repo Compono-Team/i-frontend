@@ -55,7 +55,7 @@ export default function ApplicationPage() {
         todo: e.target.value,
       }));
     }
-    if (success) setState(step + 1);
+    if (success && step === stage) setState(step + 1);
   };
 
   return (

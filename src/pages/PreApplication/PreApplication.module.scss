@@ -89,7 +89,14 @@
       width: 750px;
       height: 60px;
       flex-shrink: 0;
-      background: var(--light-gray, #F1F1F1);
+      background-color: #f0f0f0;
+      margin-bottom: 70px;
+    }
+    &__textarea {
+      width: 750px;
+      height: 120px;
+      flex-shrink: 0;
+      background-color: #f0f0f0;
       margin-bottom: 70px;
     }
   }
@@ -110,6 +117,8 @@
       flex-shrink: 0;
       border: 1px solid var(--dark-gray, #505050);
       background: #FFF;
+      position: absolute;
+      cursor: pointer;
     }
     &__text {
       color: #4f4f4f;
@@ -135,6 +144,7 @@
       text-decoration: underline;
       top: 2px;
       white-space: nowrap;
+      cursor: pointer;
     }
   }
 }
@@ -164,4 +174,17 @@
     top: 17px;
     white-space: nowrap;
   }
+  //&:hover {
+  //  color: #FFFFFF;
+  //  font-family: "Pretendard-SemiBold", Helvetica;
+  //  font-size: 25.5px;
+  //  font-weight: 600;
+  //  left: 125px;
+  //  letter-spacing: 0;
+  //  line-height: 40.5px;
+  //  position: absolute;
+  //  text-align: center;
+  //  top: 17px;
+  //  white-space: nowrap;
+  //}
 }

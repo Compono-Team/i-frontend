@@ -12,7 +12,12 @@ export default function Terms(props : Props) {
   return (
     <div className={styles.terms}>
       <div className={styles.terms__layout}>
-        <div className={styles.terms__layout__checkbox} />
+        <input
+          type="checkbox"
+          defaultChecked={isTerms}
+          onClick={() => { setTerms(!isTerms); }}
+          className={styles.terms__layout__checkbox}
+        />
         <div className={styles.terms__layout__text}>
           [필수] 개인정보 활용 수집동의
         </div>
