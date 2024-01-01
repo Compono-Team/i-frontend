@@ -5,7 +5,7 @@ import { InputText } from '../type/type';
 import Terms from './Terms';
 
 export default function ApplicationPage() {
-  const [stage, setState] = useState<number>(4);
+  const [stage, setState] = useState<number>(1);
   const [inputText, setInputText] = useState<InputText>({
     name: '', number: '', email: '', todo: '',
   });
