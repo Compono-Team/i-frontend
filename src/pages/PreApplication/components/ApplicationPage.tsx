@@ -96,7 +96,7 @@ export default function ApplicationPage() {
           <>
             <Input step={4} placeholder="하고 싶은 말을 작성해 주세요. (선택사항)" inputText={inputText} nextStage={nextStage} />
             <Terms isTerms={isTerms} setTerms={setTerms} />
-            <button type="button" className={styles.summitBtn} onClick={onClickSummit}>
+            <button type="button" disabled={!isTerms} className={styles.summitBtn} onClick={onClickSummit}>
               <div className={styles.summitBtn__text}>SUBMIT</div>
             </button>
           </>

@@ -1,3 +1,5 @@
+@use 'src/utils/styles/mediaQuery' as media;
+
 @mixin section {
   position: relative;
   width: 100%;
@@ -37,6 +39,13 @@
 .arrowBtn {
   margin-top: 50px;
   cursor: pointer;
+  width: 46px;
+  height: 83.713px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 23px;
+    height: 64px;
+  }
 
   &--btn {
     width: 46px;
@@ -50,6 +59,10 @@
   font-size: 140px;
   font-weight: 800;
   color: #151617;
+
+  @include media.media-breakpoint-down(mobile) {
+    font-size: 42px;
+  }
 
   &--section1 .top {
     text-align: left;
@@ -73,6 +86,10 @@
       font-weight: 700;
       line-height: normal;
       margin-bottom: 30px;
+      @include media.media-breakpoint-down(mobile) {
+        font-size: 30px;
+        margin-bottom: 15px;
+      }
     }
 
     &__bottom {
@@ -94,8 +111,11 @@
       margin-bottom: 20px;
       border: none;
       outline: none;
+      @include media.media-breakpoint-down(mobile) {
+        width: 311px;
+        height: 44px;
+      }
     }
-    // 20 20 마진 입력시에
     &__textarea {
       width: 750px;
       height: 120px;
@@ -108,6 +128,10 @@
       border: none;
       outline: none;
       resize: none;
+      @include media.media-breakpoint-down(mobile) {
+        width: 311px;
+        height: 88px;
+      }
     }
   }
 }
@@ -129,6 +153,10 @@
       background: #FFF;
       position: absolute;
       cursor: pointer;
+
+      @include media.media-breakpoint-down(mobile) {
+        left: 30px;
+      }
     }
     &__text {
       color: #4f4f4f;
@@ -141,6 +169,11 @@
       position: absolute;
       top: 0;
       white-space: nowrap;
+      @include media.media-breakpoint-down(mobile) {
+        font-size: 16px;
+        left: 73px;
+        top: 4px;
+      }
     }
     &__text2 {
       color: #999999;
@@ -155,6 +188,11 @@
       top: 2px;
       white-space: nowrap;
       cursor: pointer;
+      @include media.media-breakpoint-down(mobile) {
+        font-size: 16px;
+        left: 271px;
+        top: 4px;
+      }
     }
   }
 }
@@ -171,6 +209,18 @@
   width: 348px;
   margin-top: 60px;
   cursor: pointer;
+
+  @include media.media-breakpoint-down(mobile) {
+    display: flex;
+    width: 236px;
+    height: 54px;
+    padding: 17px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    margin-top: 30px;
+  }
 
   &:hover {
     background-color: #000000;
@@ -193,6 +243,10 @@
     text-align: center;
     top: 17px;
     white-space: nowrap;
+    @include media.media-breakpoint-down(mobile) {
+      top: 5px;
+      left: 70px;
+    }
   }
 }
 
@@ -211,6 +265,10 @@
     height: 480px;
     position: relative;
     width: 664px;
+    @include media.media-breakpoint-down(mobile) {
+      height: 420px;
+      width: 640px;
+    }
   }
 
   &__group {
