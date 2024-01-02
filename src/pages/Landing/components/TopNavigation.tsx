@@ -63,7 +63,7 @@ export default function TopNavigation() {
         className={styles.nav__mobile}
         type="button"
         style={{ transform: `translate(-50%, ${visible ? 0 : 200}%)` }}
-        onClick={() => navigate('/navigate')}
+        onClick={() => navigate('/application')}
       >
         사전 신청
       </button>
