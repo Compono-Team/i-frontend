@@ -210,7 +210,7 @@ export default function Landing() {
             <img src={LandingPhoto} alt="landing_photo" />
           </div>
           <div className={styles['section3-1__phrase']}>
-            일상의 순간, 그 순간을 일정으로.
+            일상의 순간을 일정으로 포착하다
             <div>
               AXYZ의 혁신적인 알고리즘을 통해 완성된
               {'\n'}
