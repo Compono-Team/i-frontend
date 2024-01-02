@@ -3,11 +3,47 @@
 @mixin section {
   position: relative;
   width: 100%;
-  height: 120vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@mixin phrase {
+  &__phrase {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    white-space: pre-wrap;
+    gap: 24px;
+    font-size: 40px;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: left;
+    white-space: pre-wrap;
+    
+    @include media.media-breakpoint-down(mobile) {
+      align-items: center;
+      font-size: 24px;
+      text-align: center;
+    }  
+
+    div {
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.5em;
+
+      @include media.media-breakpoint-down(mobile) {
+        text-align: center;
+        font-size: 16px;
+      }
+
+      span {
+        font-weight: 700;
+      }
+    }
+  }  
 }
 
 @keyframes fade-in {
@@ -15,7 +51,7 @@
     opacity: 0;
   }
   
-  to {
+  to {    
     opacity: 1;
   }
 }
@@ -152,8 +188,10 @@
   transition: 0.5s;
   word-break: keep-all;
   text-align: center;
+  line-height: 100px;
   
   @include media.media-breakpoint-down(mobile) {
+    line-height: 48px;
     font-size: 35px;
     word-break: keep-all;
     text-align: center
@@ -175,8 +213,8 @@
   
   &__sub {
     font-size: 40px;
-    font-weight: 300;
-    color: #ACAEB0;
+    font-weight: 500;
+    color: #3f3f3f;
 
     @include media.media-breakpoint-down(mobile) {
       font-size: 24px;
@@ -203,6 +241,7 @@
       color: #ACAEB0;
       white-space: pre-wrap;
       transition: 0.5s;
+      line-height: 125%;
 
       @include media.media-breakpoint-down(mobile) {
         font-size: 20px;
@@ -222,7 +261,6 @@
   color: #ffffff;
 
   @include media.media-breakpoint-down(mobile) {
-    height: 70vh;
     font-size: 40px;
     word-break: keep-all;
     text-align: center
@@ -230,8 +268,9 @@
   
   &__sub {
     font-size: 40px;
-    font-weight: 300;
-    color: #ACAEB0;
+    font-weight: 500;
+    color: #3f3f3f;
+    line-height: 125%;
 
     @include media.media-breakpoint-down(mobile) {
       font-size: 24px;
@@ -263,6 +302,7 @@
       color: #ACAEB0;
       white-space: pre-wrap;
       transition: 0.5s;
+      line-height: 1.5em;
 
       @include media.media-breakpoint-down(mobile) {
         font-size: 20px;
@@ -306,7 +346,7 @@
 
 .section2-4 {
   @include section;
-  justify-content: flex-start;
+  justify-content: space-around;
   text-align: center;
   font-size: 48px;
   font-weight: 600;
@@ -316,6 +356,15 @@
     justify-content: flex-start;
     font-size: 24px;
     white-space: pre-wrap;
+  }
+
+  svg {
+    width: auto;
+    height: 36px;
+
+    @include media.media-breakpoint-down(mobile) {
+      height: 18px;
+    }
   }
 
   &__explain {
@@ -366,8 +415,10 @@
   text-align: center;
   white-space: pre-wrap;
   transition: 0.5s;
+  line-height: 125%;
 
   @include media.media-breakpoint-down(mobile) {
+    height: 50vh;
     font-size: 32px
   }  
 
@@ -375,6 +426,7 @@
 
 .section3-1 {
   @include section;
+  @include phrase;
   flex-direction: row;
   justify-content: space-around;
 
@@ -399,34 +451,11 @@
       height: 100%;
     }
   }
-
-  &__phrase {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    font-size: 40px;
-    font-weight: 700;
-    color: #ffffff;
-    white-space: pre-wrap;    
-
-    @include media.media-breakpoint-down(mobile) {
-      font-size: 24px;
-      text-align: center;
-    }  
-
-    div {
-      font-size: 28px;
-      font-weight: 400;
-
-      @include media.media-breakpoint-down(mobile) {
-        font-size: 16px;
-      }    
-    }
-  }
 }
 
 .section3-2 {
   @include section;
+  @include phrase;
   flex-direction: row;
   justify-content: space-around;
 
@@ -452,40 +481,11 @@
       height: 100%;
     }
   }
-
-  &__phrase {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    white-space: pre-wrap;
-    gap: 10px;
-    font-size: 40px;
-    font-weight: 700;
-    color: #ffffff;
-    text-align: right;
-    white-space: pre-wrap;
-    
-    @include media.media-breakpoint-down(mobile) {
-      align-items: center;
-      font-size: 24px;
-      text-align: center;
-    }  
-
-    div {
-      font-size: 28px;
-      font-weight: 400;
-      text-align: end;
-
-      @include media.media-breakpoint-down(mobile) {
-        text-align: center;
-        font-size: 16px;
-      }    
-    }
-  }  
 }
 
 .section3-3 {
   @include section;
+  @include phrase;
   flex-direction: row;
   justify-content: space-around;
 
@@ -500,12 +500,14 @@
     align-items: center;
     justify-content: center;
     max-width: auto;
+    padding-right: 100px;
     height: 70%;
     border-radius: 40px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 100%;
       height: auto;
+      padding-right: 0;
     }
 
     &--web {
@@ -522,13 +524,15 @@
     &--mobile {
       position: absolute;
       z-index: 1;
-      height: 60%;
+      width: auto;
+      height: 65%;
       right: 0;
       bottom: 0;
 
       @include media.media-breakpoint-down(mobile) {
+        right: 0;
         bottom: 30%;
-        height: 30%;
+        height: 25%;
       }
     }
     
@@ -538,32 +542,33 @@
     }
   }
 
-  &__phrase {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 40px;
-    font-weight: 700;
-    color: #ffffff;
-    white-space: pre-wrap;
+  // &__phrase {
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: 24px;
+  //   font-size: 40px;
+  //   font-weight: 700;
+  //   color: #ffffff;
+  //   white-space: pre-wrap;
     
-    @include media.media-breakpoint-down(mobile) {
-      font-size: 24px;
-      align-items: center;
-    }  
+  //   @include media.media-breakpoint-down(mobile) {
+  //     font-size: 24px;
+  //     align-items: center;
+  //   }  
     
-    div {
-      white-space: pre-wrap;
-      font-size: 28px;
-      font-weight: 400;
-      text-align: start;
+  //   div {
+  //     white-space: pre-wrap;
+  //     font-size: 28px;
+  //     font-weight: 400;
+  //     text-align: start;
+  //     line-height: 1.5em;
 
-      @include media.media-breakpoint-down(mobile) {
-        text-align: center;
-        font-size: 16px;
-      }    
-    }
-  }  
+  //     @include media.media-breakpoint-down(mobile) {
+  //       text-align: center;
+  //       font-size: 16px;
+  //     }    
+  //   }
+  // }  
 }
 
 .section3-4 {
@@ -584,21 +589,30 @@
       margin-bottom: 80px;
     }
 
-    span {
+    &--text {
       font-family: Pretendard;
       margin-top: 24px;
       font-size: 40px;
-      font-weight: 700;
+      font-weight: 400;
+
+      span {
+        font-weight: 700;
+      }
 
       @include media.media-breakpoint-down(mobile) {
         font-size: 20px;
       }
     }
+  }
 
-    img {
-      width: 360px;
-      height: auto;
-    }
+  &__logo {
+    width: 180px;
+    margin-bottom: 72px;
+  }
+
+  &__title {
+    width: 180px;
+    margin-bottom: 120px;
   }
 
   &__reserve {

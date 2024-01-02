@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import useMediaQuery from 'hooks/useMediaQuery';
 import LogoBlack from 'static/image/Logo/both_white_trans.png';
+import { useNavigate } from 'react-router-dom';
 import styles from '../Landing.module.scss';
 
 export default function TopNavigation() {
   const { isMobile } = useMediaQuery();
+  const navigate = useNavigate();
   const [isNavVisible, setIsNavVisible] = useState<boolean>(true);
   const [prevScrollPos, setPrevScrollPos] = useState<number>(window.scrollY);
   const [visible, setVisible] = useState<boolean>(true);
@@ -50,6 +52,7 @@ export default function TopNavigation() {
         <button
           className={styles['nav__menu--register']}
           type="button"
+          onClick={() => navigate('/application')}
         >
           사전 신청
         </button>
@@ -60,6 +63,7 @@ export default function TopNavigation() {
         className={styles.nav__mobile}
         type="button"
         style={{ transform: `translate(-50%, ${visible ? 0 : 200}%)` }}
+        onClick={() => navigate('/navigate')}
       >
         사전 신청
       </button>

@@ -3,7 +3,7 @@ import Input from './Input';
 import styles from '../PreApplication.module.scss';
 import { InputText } from '../type/type';
 import Terms from './Terms';
-import { onRegReservation } from '../api/apis';
+import onRegReservation from '../api/apis';
 
 export default function ApplicationPage() {
   const [stage, setState] = useState<number>(4);
@@ -63,7 +63,7 @@ export default function ApplicationPage() {
   const onClickSummit = () => {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      onRegReservation(inputText).then((res) => {
+      onRegReservation(inputText).then((res:any) => {
         const currentURL = window.location.href;
         const url = new URL(currentURL);
         url.pathname = '/';

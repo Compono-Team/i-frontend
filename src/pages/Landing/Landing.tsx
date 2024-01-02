@@ -10,13 +10,15 @@ import LandingPhoto from 'static/image/Landing/landing_photo.png';
 import LandingList from 'static/image/Landing/landing_list.png';
 import LandingMain from 'static/image/Landing/landing_main.png';
 import LandingSummary from 'static/image/Landing/landing_summary.png';
+import { ReactComponent as LogoPhrase } from 'static/svg/logo_phrase.svg';
+import { useNavigate } from 'react-router-dom';
 import styles from './Landing.module.scss';
 import TopNavigation from './components/TopNavigation';
 
 export default function Landing() {
   const { isMobile } = useMediaQuery();
+  const navigate = useNavigate();
   const [slideIndex, setSlideIndex] = useState<number>(0);
-  console.log('slideIndex:', slideIndex);
   const firstRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState<number>(0);
 
@@ -80,11 +82,10 @@ export default function Landing() {
           }}
         >
           <span>
-            완벽한 시간 관리,
+            완벽한 시간 관리
           </span>
           <span>
             시간의 정보에 대한 완전한 이해로부터
-
           </span>
           <span />
         </div>
@@ -101,18 +102,16 @@ export default function Landing() {
           </span>
           <div
             className={styles['section2-2__phrase']}
-            style={{ opacity: handlScrollDegree(0.8) === 1 ? 1 : 0 }}
+            style={{ opacity: handlScrollDegree(1.05) === 1 ? 1 : 0 }}
           >
             시간은 공간의 흐름이고,
-            {isMobile && '\n'}
-            {' '}
+            {isMobile ? '\n' : ' '}
             공간은 시간의 내용이다
-            <div style={{ opacity: handlScrollDegree(1) === 1 ? 1 : 0 }}>
+            <div style={{ opacity: handlScrollDegree(1.1) === 1 ? 1 : 0 }}>
               시간과 공간은 본디 하나로 얽혀 있기에
               {'\n'}
               공간의 흐름이 결여된 시간은 결코
-              {isMobile && '\n'}
-              {' '}
+              {isMobile ? '\n' : ' '}
               온전한 정보를 담지 못합니다.
             </div>
           </div>
@@ -128,20 +127,20 @@ export default function Landing() {
               [styles.line]: true,
               [styles.line__left]: true,
             })}
-            style={{ width: `${20 * handlScrollDegree(1.3)}%` }}
+            style={{ width: `${20 * handlScrollDegree(1.5)}%` }}
           />
           <span
             className={cn({
               [styles.line]: true,
               [styles.line__right]: true,
             })}
-            style={{ width: `${20 * handlScrollDegree(1.3)}%` }}
+            style={{ width: `${20 * handlScrollDegree(1.5)}%` }}
           />
         </div>
 
         <div className={styles['section2-3']}>
           <span style={{
-            opacity: handlScrollDegree(1.7),
+            opacity: handlScrollDegree(1.5),
             justifyContent: 'flex-start',
           }}
           >
@@ -156,25 +155,15 @@ export default function Landing() {
 
           <div
             className={styles['section2-3__phrase']}
-            style={{ opacity: handlScrollDegree(1.5) === 1 ? 1 : 0 }}
+            style={{ opacity: handlScrollDegree(1.55) === 1 ? 1 : 0 }}
           >
-            시간은
-            {' '}
-            <span>{'\'시점\''}</span>
-            과
-            {' '}
-            <span>{'\'사이\''}</span>
-            에
-            {' '}
-            {isMobile && '\n'}
-            의해 정의된다
-            <div style={{ opacity: handlScrollDegree(1.7) === 1 ? 1 : 0 }}>
-              시점과 사이를 이어 하루가 되고,
+            모든 시간을 정의하고 정리하다
+            <div style={{ opacity: handlScrollDegree(1.6) === 1 ? 1 : 0 }}>
+              시간은 때와 그 사이로 정의됩니다.
               {'\n'}
-              한 주, 한 달, 한 해, 그 너머의 시간에 이르러
-              {isMobile && '\n'}
-              {' '}
-              하나의 시선이 완성됩니다.
+              시점의 유실물까지 한 데 모아
+              {isMobile ? '\n' : ' '}
+              이루어지는 온전한 시간을 지향합니다.
             </div>
           </div>
           <span
@@ -187,13 +176,13 @@ export default function Landing() {
         </div>
         <div
           className={styles['section2-4']}
-          style={{ opacity: handlScrollDegree(2.5) }}
+          style={{ opacity: handlScrollDegree(2.8) }}
         >
           <span>
-            이제, 당신의 치열했던 하루의 시간,
+            당신의 치열했던 하루의 시간,
             {'\n'}
-            {' '}
-            AXYZ가 알아서 정리해드릴게요.
+            <LogoPhrase />
+            가 알아서 정리해드릴게요.
           </span>
           <div className={styles['section2-4__explain']}>
             <div className={styles['section2-4__explain--info']}>
@@ -206,7 +195,7 @@ export default function Landing() {
 
         <div
           className={styles.section3}
-          style={{ opacity: handlScrollDegree(3.5) }}
+          style={{ opacity: handlScrollDegree(isMobile ? 3.5 : 4) }}
         >
           모든 것이 하나로
           {'\n'}
@@ -225,14 +214,15 @@ export default function Landing() {
             <div>
               AXYZ의 혁신적인 알고리즘을 통해 완성된
               {'\n'}
-              {'\'사진 인식 기반 자동 일정화\''}
-              는 사진 속 텍스트,
-              {'\n'}
+              <span>
+                사진 인식 기반 자동 일정화기능
+              </span>
+              은 사진 속
               {' '}
-              장소, 시간, 그리고 이벤트의 성격까지 분석해,
               {'\n'}
-              {' '}
-              사용자만을 위한 일정을 디자인 합니다.
+              텍스트, 시간, 장소, 심지어 이벤트의 성격까지
+              {'\n'}
+              분석해 사용자만을 위한 일정을 디자인 합니다.
             </div>
           </div>
         </div>
@@ -288,11 +278,24 @@ export default function Landing() {
           style={{ opacity: handlScrollDegree(isMobile ? 7.5 : 8) }}
         >
           <div className={styles['section3-4__phrase']}>
-            <img src={Logo} alt="logo" />
-            <img src={namelogo} alt="logo" />
-            <span className={styles['section3-4__phrase--text']}>사전예약 하고 출시 알림을 받아보세요!</span>
+            <img className={styles['section3-4__logo']} src={Logo} alt="logo" />
+            <img className={styles['section3-4__title']} src={namelogo} alt="logo" />
+            <span className={styles['section3-4__phrase--text']}>
+              <span>사전예약</span>
+              하고
+              {' '}
+              <span>출시 알림</span>
+              을 받아보세요!
+            </span>
           </div>
-          <button className={styles['section3-4__reserve']} type="button">서비스 출시 알림 받기</button>
+          <button
+            className={styles['section3-4__reserve']}
+            type="button"
+            onClick={() => navigate('/application')}
+          >
+            서비스 출시 알림 받기
+
+          </button>
         </div>
       </div>
     </div>
