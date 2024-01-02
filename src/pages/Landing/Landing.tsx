@@ -82,7 +82,7 @@ export default function Landing() {
           }}
         >
           <span>
-            완벽한 시간 관리
+            완벽한 시간 관리,
           </span>
           <span>
             시간의 정보에 대한 완전한 이해로부터
@@ -106,7 +106,7 @@ export default function Landing() {
           >
             시간은 공간의 흐름이고,
             {isMobile ? '\n' : ' '}
-            공간은 시간의 내용이다
+            공간은 시간의 내용이다.
             <div style={{ opacity: handlScrollDegree(1.1) === 1 ? 1 : 0 }}>
               시간과 공간은 본디 하나로 얽혀 있기에
               {'\n'}
@@ -157,7 +157,7 @@ export default function Landing() {
             className={styles['section2-3__phrase']}
             style={{ opacity: handlScrollDegree(1.55) === 1 ? 1 : 0 }}
           >
-            모든 시간을 정의하고 정리하다
+            모든 시간을 정의하고 정리하다.
             <div style={{ opacity: handlScrollDegree(1.6) === 1 ? 1 : 0 }}>
               시간은 때와 그 사이로 정의됩니다.
               {'\n'}
@@ -231,9 +231,9 @@ export default function Landing() {
           style={{ opacity: handlScrollDegree(isMobile ? 5.5 : 6) }}
         >
           <div className={styles['section3-2__phrase']}>
-            AXST, 바쁜 당신을 위한 최고의 동반자
+            NAVI, 바쁜 당신을 위한 최고의 동반자
             <div>
-              AXYZ의 AXST는 사용자가 인터넷 검색 없이
+              NAVI의 AXST는 사용자가 인터넷 검색 없이
               {'\n'}
               자동으로 필요한 정보를 찾아
               {'\n'}

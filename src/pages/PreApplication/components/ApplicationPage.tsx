@@ -90,9 +90,9 @@ export default function ApplicationPage() {
           </clipPath>
         </defs>
       </svg>
-      {stage > 0 && <Input step={1} placeholder="* 이름을 작성해 주세요 :)  ex. 이창중" inputText={inputText} nextStage={nextStage} />}
-      {stage > 1 && <Input step={2} placeholder="* 연락처를 작성해 주세요 :) ex. 010-XXXX-XXXX" inputText={inputText} nextStage={nextStage} />}
-      {stage > 2 && <Input step={3} placeholder="* 이메일을 작성해 주세요 :) ex. ot3233@naver.com" inputText={inputText} nextStage={nextStage} />}
+      {stage > 0 && <Input step={1} placeholder="* 이름을 작성해 주세요  ex. 홍길동" inputText={inputText} nextStage={nextStage} />}
+      {stage > 1 && <Input step={2} placeholder="* 연락처를 작성해 주세요  ex. 010-XXXX-XXXX" inputText={inputText} nextStage={nextStage} />}
+      {stage > 2 && <Input step={3} placeholder="* 이메일을 작성해 주세요  ex. axyz@today.com" inputText={inputText} nextStage={nextStage} />}
       {stage > 3
           && (
           <>

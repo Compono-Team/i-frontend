@@ -183,7 +183,8 @@
 .section2-1 {
   @include section;
   font-size: 76px;
-  font-weight: 700;
+  font-weight: 850;
+  letter-spacing: -2%;
   color: #ffffff;
   transition: 0.5s;
   word-break: keep-all;
@@ -226,6 +227,7 @@
   &__phrase {
     margin-top: 90px;
     font-size: 44px;
+    font-weight: 750;
     transition: 0.5s;
     word-break: keep-all;
 
@@ -281,7 +283,7 @@
 
   &__phrase {
     margin-top: 90px;
-    font-weight: 400;
+    font-weight: 750;
     font-size: 44px;
     transition: 0.5s;
     word-break: keep-all;
@@ -411,7 +413,8 @@
   @include section;
   font-size: 76px;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 850;
+  letter-spacing: -2%;
   text-align: center;
   white-space: pre-wrap;
   transition: 0.5s;

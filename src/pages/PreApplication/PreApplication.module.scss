@@ -180,6 +180,7 @@ body {
       margin-bottom: 20px;
       border: none;
       outline: none;
+      border-radius: 24px;
       @include media.media-breakpoint-down(mobile) {
         width: 311px;
         height: 44px;
@@ -194,6 +195,7 @@ body {
       background-color: #f0f0f0;
       line-height: 20px;
       margin-bottom: 20px;
+      border-radius: 32px;
       border: none;
       outline: none;
       resize: none;
