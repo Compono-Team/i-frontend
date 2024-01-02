@@ -62,7 +62,7 @@ export default function ApplicationPage() {
 
   const onClickSummit = () => {
     try {
-      onRegReservation(inputText).then((res:any) => {
+      onRegReservation(inputText).then(() => {
         const currentURL = window.location.href;
         const url = new URL(currentURL);
         url.pathname = '/';
