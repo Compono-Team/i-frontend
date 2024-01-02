@@ -63,9 +63,10 @@ export default function ApplicationPage() {
   const onClickSummit = () => {
     try {
       onRegReservation(inputText).then((res) => {
-        console.log('res', res);
-        const response = res.data;
-        console.log('response', response);
+        const currentURL = window.location.href;
+        const url = new URL(currentURL);
+        url.pathname = '/';
+        window.location.href = url.toString();
       });
     } catch (e) {
       console.log('e', e);
