@@ -46,7 +46,7 @@ export default function Terms(props : Props) {
           <div className={styles.frame__rectangle} />
           <div className={styles.frame__group}>
             <p className={styles.frame__compono}>
-              (주)Compono는 「개인정보 보호법」에 따라 동의를 얻어, 본 설문과 관련하여 수집한 정보를 관리함에 있습니다.
+              Compono는 「개인정보 보호법」에 따라 동의를 얻어, 본 설문과 관련하여 수집한 정보를 관리함에 있습니다.
               <br />
               <br />
               목적 : 서비스 출시 및 프로모션 알림

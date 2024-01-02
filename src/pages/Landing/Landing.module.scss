@@ -3,7 +3,7 @@
 @mixin section {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 99vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,6 +27,8 @@
       align-items: center;
       font-size: 24px;
       text-align: center;
+      margin-top: auto;
+      margin-bottom: 180px;
     }  
 
     div {
@@ -194,6 +196,7 @@
   @include media.media-breakpoint-down(mobile) {
     line-height: 48px;
     font-size: 35px;
+    //letter-spacing: ;
     word-break: keep-all;
     text-align: center
   }
@@ -506,6 +509,7 @@
     padding-right: 100px;
     height: 70%;
     border-radius: 40px;
+    margin-bottom: -160px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 100%;
@@ -543,8 +547,23 @@
       width: 90%;
       height: 80%;
     }
+  &__phrase {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-size: 40px;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: pre-wrap;
+      
+    @include media.media-breakpoint-down(mobile) {
+    font-size: 24px;
+    align-items: center;
+    margin-top: -180px
+      }  
+    }
   }
-
+}
   // &__phrase {
   //   display: flex;
   //   flex-direction: column;
@@ -572,8 +591,6 @@
   //     }    
   //   }
   // }  
-}
-
 .section3-4 {
   @include section;
 

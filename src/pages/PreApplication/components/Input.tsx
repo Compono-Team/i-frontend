@@ -45,7 +45,7 @@ Input(props : Props) {
             value={text}
             placeholder={placeholder}
             className={styles.application__textarea}
-            style={{ textAlign: text.length > 0 ? 'left' : 'center' }}
+            style={{ textAlign: text.length < 0 && step === 4 ? 'left' : 'center' }}
             maxLength={200}
             onChange={(e) => nextStage(e, step)}
           />

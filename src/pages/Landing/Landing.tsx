@@ -85,7 +85,7 @@ export default function Landing() {
             완벽한 시간 관리,
           </span>
           <span>
-            시간의 정보에 대한 완전한 이해로부터
+            시간에 대한 완전한 이해로부터
           </span>
           <span />
         </div>
@@ -215,7 +215,7 @@ export default function Landing() {
               AXYZ의 혁신적인 알고리즘을 통해 완성된
               {'\n'}
               <span>
-                사진 인식 기반 자동 일정화기능
+                사진 인식 기반 자동 일정화 기능
               </span>
               은 사진 속
               {' '}
@@ -231,19 +231,19 @@ export default function Landing() {
           style={{ opacity: handlScrollDegree(isMobile ? 5.5 : 6) }}
         >
           <div className={styles['section3-2__phrase']}>
-            NAVI, 바쁜 당신을 위한 최고의 동반자
+            NAVI를 따라 누구보다 빠르게
             <div>
-              NAVI의 AXST는 사용자가 인터넷 검색 없이
+              NAVI는 사용자가 따로 검색해서 정리하지 않아도
               {'\n'}
-              자동으로 필요한 정보를 찾아
+              자동으로 필요한 정보를 찾아 일정에 편입하는 등
               {'\n'}
-              일정에 편입하고 여러가지 도움을 주는
+              무한한 가능성을 잠재한&nbsp;
+              <span>
+                시간 관리 최적화 AI
+              </span>
+              입니다.
               {'\n'}
-              당신만의 맞춤형 비서입니다.
-              {'\n'}
-              더욱 놀라운 점은 이 모든 것이
-              {'\n'}
-              사용자의 목소리만으로도 가능하다는 것이죠.
+              물론 당신의 말 한마디만으로 NAVI를 깨울 수도 있죠.
             </div>
           </div>
           <div className={styles['section3-2__photo']}>
@@ -259,17 +259,18 @@ export default function Landing() {
             <img className={styles['section3-3__photo--mobile']} src={LandingWidget} alt="mobile" />
           </div>
           <div className={styles['section3-3__phrase']}>
-            간편하게, 그러나 강력하게
+            A부터 XYZ까지 집요하게
             <div>
-              AXYZ는 기존과 다른 방식의 연동성을 추구
+              AXYZ는 사용자의 입장에서 접근성과
               {'\n'}
-              합니다. 그러나 기존보다 훨씬 간편하고 강
+              편의성 향상을 위해 끊임없이 고민합니다.
               {'\n'}
-              력한 힘을 가지고 있죠. 모든 조작방식은 각
+              웹 서비스, 모바일 위젯 등 각각의 기기에
               {'\n'}
-              각의 기기에 알맞는 형태로 설계되어 있어
+              최적화된 형태로 설계된 인터페이스를 통해
               {'\n'}
-              사용자의 편의성을 극대화합니다.
+              <span>다채로운 사용자 경험</span>
+              을 제공합니다.
             </div>
           </div>
         </div>
