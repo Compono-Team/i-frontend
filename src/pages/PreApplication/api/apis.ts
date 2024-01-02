@@ -8,7 +8,6 @@ const onRegReservation = (param: any) => {
 
   const config = {
     headers,
-    withCredentials: true,
   };
 
   const response = axios.post('https://compno.com/api/v1/pre-reservation', { ...param }, config);
