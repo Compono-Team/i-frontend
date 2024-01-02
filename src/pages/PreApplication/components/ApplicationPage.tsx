@@ -62,7 +62,6 @@ export default function ApplicationPage() {
 
   const onClickSummit = () => {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onRegReservation(inputText).then((res:any) => {
         const currentURL = window.location.href;
         const url = new URL(currentURL);
