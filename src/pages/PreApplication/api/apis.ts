@@ -7,7 +7,7 @@ const onRegReservation = (param: any) => {
   };
 
   // Axios 요청에 헤더 추가
-  const response = axios.post('http://compno.com/v1/pre-reservation', { ...param }, { headers });
+  const response = axios.post('https://compno.com/v1/pre-reservation', { ...param }, { headers });
 
   return response;
 };
