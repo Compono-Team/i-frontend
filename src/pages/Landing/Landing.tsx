@@ -27,25 +27,6 @@ export default function Landing() {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
   useEffect(() => {
-    const preloadFont = (fontPath: string) => {
-      const link = document.createElement('link');
-      link.href = fontPath;
-      link.rel = 'preload';
-      link.as = 'font';
-      link.type = 'font/woff2';
-      link.crossOrigin = 'anonymous';
-      document.head.appendChild(link);
-    };
-    const fontPaths = [
-      '/static/fonts/Anybody_Expanded-ExtraBold.woff2',
-      '/static/fonts/Anybody-ExtraBold.woff2',
-      '/static/fonts/Pretendard-Black.woff2',
-      '/static/fonts/Pretendard-Bold.woff2',
-      '/static/fonts/Pretendard-ExtraBold.woff2',
-      '/static/fonts/Pretendard-Medium.woff2',
-      '/static/fonts/Pretendard-Regular.woff2',
-    ];
-    fontPaths.forEach(preloadFont);
     const handleScroll = () => {
       setScrollY(window.scrollY);
       imageSequence.forEach((imageSrc) => {
