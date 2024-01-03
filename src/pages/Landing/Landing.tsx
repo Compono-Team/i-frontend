@@ -98,12 +98,14 @@ export default function Landing() {
         <span>
           All the time
         </span>
+        {window.scrollY === 0 && (
         <div className={styles.section1__logo}>
           <img
             src={imageSequence[currentImageIndex]}
             alt={`Frame ${currentImageIndex}`}
           />
         </div>
+        )}
         <span className={styles.section1__front}>
           All-ganize
         </span>
