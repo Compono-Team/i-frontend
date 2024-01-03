@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import {
+  useState, useEffect, useRef, useLayoutEffect,
+} from 'react';
 import cn from 'utils/ClassName';
 import useMediaQuery from 'hooks/useMediaQuery';
 import Logo from 'static/image/Logo/logo_white_trans.png';
@@ -21,34 +23,30 @@ export default function Landing() {
   const [slideIndex, setSlideIndex] = useState<number>(0);
   const firstRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState<number>(0);
-
   const imageCount: number = 260;
-  const imageSequence: string[] = Array.from({ length: imageCount }, (_, i) => `/videos/Image_Sequence/${String(i + 1).padStart(4, '0')}.png`);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const landingVideoImages = Array.from({ length: imageCount }, (_, i) => `/videos/Image_Sequence/${String(i + 1).padStart(4, '0')}.png`);
 
   useEffect(() => {
+    const imageSequence = Array.from({ length: imageCount }, (_, i) => `/videos/Image_Sequence/${String(i + 1).padStart(4, '0')}.png`);
+    const intervalId = setInterval(() => setSlideIndex((prev) => (prev + 1) % 3), 3000);
+
     const handleScroll = () => {
       setScrollY(window.scrollY);
-      imageSequence.forEach((imageSrc) => {
-        const img = new Image();
-        img.src = imageSrc;
-      });
     };
 
     const imageSequenceInterval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSequence.length);
     }, 50);
 
-    const intervalId = setInterval(() => setSlideIndex((prev) => (prev + 1) % 3), 1000);
-
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (intervalId) clearInterval(intervalId);
       clearInterval(imageSequenceInterval);
+      clearInterval(intervalId);
     };
-  }, [imageSequence]);
+  }, []);
 
   const handlScrollDegree = (page = 1, weight = 1) => {
     if (((scrollY
@@ -62,6 +60,35 @@ export default function Landing() {
 
     return 1;
   };
+
+  const preloadFont = (fontPath: string) => {
+    const link = document.createElement('link');
+    link.href = fontPath;
+    link.rel = 'preload';
+    link.as = 'font';
+    link.type = 'font/woff2';
+    link.crossOrigin = 'anonymous';
+    document.head.appendChild(link);
+  };
+
+  useLayoutEffect(() => {
+    const fontList = [
+      '/static/fonts/Anybody_Expanded-ExtraBold.woff2',
+      '/static/fonts/Anybody-ExtraBold.woff2',
+      '/static/fonts/Pretendard-Black.woff2',
+      '/static/fonts/Pretendard-Bold.woff2',
+      '/static/fonts/Pretendard-ExtraBold.woff2',
+      '/static/fonts/Pretendard-Medium.woff2',
+      '/static/fonts/Pretendard-Regular.woff2',
+    ];
+
+    fontList.forEach(preloadFont);
+
+    Array.from({ length: imageCount }, (_, i) => `/videos/Image_Sequence/${String(i + 1).padStart(4, '0')}.png`).forEach((imageSrc) => {
+      const img = new Image();
+      img.src = imageSrc;
+    });
+  }, []);
 
   return (
     <div className={styles.template}>
@@ -82,7 +109,7 @@ export default function Landing() {
         {window.scrollY === 0 && (
         <div className={styles.section1__logo}>
           <img
-            src={imageSequence[currentImageIndex]}
+            src={landingVideoImages[currentImageIndex]}
             alt={`Frame ${currentImageIndex}`}
           />
         </div>
