@@ -168,9 +168,16 @@
   
   &__logo {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     height: 70vh;
-    margin-top: -210px;
     z-index: 1;
+
+    img {
+      width: auto;
+      height: 100%;
+    }
 
     @include media.media-breakpoint-down(mobile) {
       width: auto;
