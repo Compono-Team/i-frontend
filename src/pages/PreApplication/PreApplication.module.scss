@@ -179,10 +179,11 @@ body {
       text-align: center;
       flex-shrink: 0;
       background-color: #f0f0f0;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       border: none;
       outline: none;
       border-radius: 24px;
+
       @include media.media-breakpoint-down(mobile) {
         width: 311px;
         height: 44px;
@@ -204,6 +205,16 @@ body {
         width: 311px;
         height: 88px;
       }
+    }
+    &__warning {
+      color: var(--danger, #E00000);
+      margin-bottom: 10px;
+      text-align: center;
+      font-family: Pretendard;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%; /* 14px */
     }
   }
 }
@@ -279,7 +290,7 @@ body {
   height: 80px;
   position: relative;
   width: 348px;
-  margin-top: 60px;
+  margin-top: 30px;
   cursor: pointer;
 
   @include media.media-breakpoint-down(mobile) {
@@ -399,4 +410,15 @@ body {
     top: 44px;
     width: 16px;
   }
+}
+
+.axyzlogo {
+  width: 80px;
+  height: 40px;
+}
+
+.axyzlogoText {
+  width: 80px;
+  height: 49.444px;
+  margin-bottom: 10px;
 }

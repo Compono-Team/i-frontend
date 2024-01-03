@@ -22,10 +22,41 @@ export default function Landing() {
   const firstRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState<number>(0);
 
+  const imageCount: number = 260;
+  const imageSequence: string[] = Array.from({ length: imageCount }, (_, i) => `/videos/Image_Sequence/${String(i + 1).padStart(4, '0')}.png`);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+
   useEffect(() => {
+    const fontPaths = [
+      '/static/fonts/Anybody_Expanded-ExtraBold.woff2',
+      '/static/fonts/Anybody-ExtraBold.woff2',
+      '/static/fonts/Pretendard-Black.woff2',
+      '/static/fonts/Pretendard-Bold.woff2',
+      '/static/fonts/Pretendard-ExtraBold.woff2',
+      '/static/fonts/Pretendard-Medium.woff2',
+      '/static/fonts/Pretendard-Regular.woff2',
+    ];
+    fontPaths.forEach((fontPath) => {
+      const link = document.createElement('link');
+      link.href = fontPath;
+      link.rel = 'preload';
+      link.as = 'font';
+      link.type = 'font/woff2';
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+    });
     const handleScroll = () => {
       setScrollY(window.scrollY);
+      imageSequence.forEach((imageSrc: string) => {
+        const img = new Image();
+        img.src = imageSrc;
+      });
     };
+
+    const imageSequenceInterval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSequence.length);
+    }, 50);
+
     const intervalId = setInterval(() => setSlideIndex((prev) => (prev + 1) % 3), 4000);
 
     window.addEventListener('scroll', handleScroll);
@@ -33,8 +64,9 @@ export default function Landing() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       clearInterval(intervalId);
+      clearInterval(imageSequenceInterval);
     };
-  }, []);
+  }, [imageSequence, imageSequence.length]);
 
   const handlScrollDegree = (page = 1, weight = 1) => {
     if (((scrollY
@@ -65,9 +97,12 @@ export default function Landing() {
         <span>
           All the time
         </span>
-        <video className={styles.section1__logo} muted autoPlay loop>
-          <source src="/videos/landing.webm" type="video/webm" />
-        </video>
+        <div className={styles.section1__logo}>
+          <img
+            src={imageSequence[currentImageIndex]}
+            alt={`Frame ${currentImageIndex}`}
+          />
+        </div>
         <span className={styles.section1__front}>
           All-ganize
         </span>
