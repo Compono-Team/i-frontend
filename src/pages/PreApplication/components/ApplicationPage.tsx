@@ -40,23 +40,21 @@ export default function ApplicationPage() {
   };
 
   const onClickSummit = () => {
-    try {
-      let Pass = true;
-      Object.keys(inputText).forEach((key, idx) => {
-        if (idx !== 3 && !Pass) {
-          Pass = inputText[key].replaceAll(' ', '') !== '';
-        }
-      });
-      if (isTerms && Pass && warningList.filter((item) => item).length === 0) {
-        onRegReservation(inputText).then(() => {
-          const currentURL = window.location.href;
-          const url = new URL(currentURL);
-          url.pathname = '/';
-          window.location.href = url.toString();
-        });
+    let Pass = true;
+    Object.keys(inputText).forEach((key, idx) => {
+      if (idx !== 3) {
+        Pass = inputText[key].replaceAll(' ', '') !== '';
+        warningList[idx] = !Pass;
+        setWarningLit([...warningList]);
       }
-    } catch (e) {
-      console.log('e', e);
+    });
+    if (isTerms && Pass && warningList.filter((item) => item).length === 0) {
+      onRegReservation(inputText).then(() => {
+        const currentURL = window.location.href;
+        const url = new URL(currentURL);
+        url.pathname = '/';
+        window.location.href = url.toString();
+      });
     }
   };
 
@@ -94,10 +92,9 @@ export default function ApplicationPage() {
       <Input step={3} placeholder="* 이메일을 작성해 주세요  ex. axyz@today.com" inputText={inputText} nextStage={nextStage} warning={warningList} setWarningLit={setWarningLit} />
       <Input step={4} placeholder="하고 싶은 말을 작성해 주세요. (선택사항)" inputText={inputText} nextStage={nextStage} />
       <Terms isTerms={isTerms} setTerms={setTerms} />
-      <button type="button" disabled={!isTerms} className={styles.summitBtn} onClick={onClickSummit}>
+      <button type="button" className={styles.summitBtn} onClick={onClickSummit}>
         <div className={styles.summitBtn__text}>SUBMIT</div>
       </button>
-
     </div>
   );
 }

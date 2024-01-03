@@ -30,12 +30,11 @@ Input(props : Props) {
     }
     if (step === 2) {
       const regPhoneNumber = /^(010|011)-(\d{4})-(\d{4})$/;
-      const phoneNumber = text.replace(regPhoneNumber, '$1$2$3');
-
-      success = /^(010|011)\d{8}$/.test(phoneNumber);
+      success = regPhoneNumber.test(text);
     }
+
     if (step === 3) {
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|co\.kr)$/; // com 또는 co.kr만 허용
       success = emailRegex.test(text);
     }
     if (cloneWarning) {
