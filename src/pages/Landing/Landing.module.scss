@@ -168,7 +168,8 @@
   
   &__logo {
     position: absolute;
-    height: 80vh;
+    height: 70vh;
+    margin-top: -210px;
     z-index: 1;
 
     @include media.media-breakpoint-down(mobile) {
