@@ -27,6 +27,15 @@ export default function Landing() {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
   useEffect(() => {
+    const preloadFont = (fontPath: string) => {
+      const link = document.createElement('link');
+      link.href = fontPath;
+      link.rel = 'preload';
+      link.as = 'font';
+      link.type = 'font/woff2';
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+    };
     const fontPaths = [
       '/static/fonts/Anybody_Expanded-ExtraBold.woff2',
       '/static/fonts/Anybody-ExtraBold.woff2',
@@ -36,18 +45,10 @@ export default function Landing() {
       '/static/fonts/Pretendard-Medium.woff2',
       '/static/fonts/Pretendard-Regular.woff2',
     ];
-    fontPaths.forEach((fontPath) => {
-      const link = document.createElement('link');
-      link.href = fontPath;
-      link.rel = 'preload';
-      link.as = 'font';
-      link.type = 'font/woff2';
-      link.crossOrigin = 'anonymous';
-      document.head.appendChild(link);
-    });
+    fontPaths.forEach(preloadFont);
     const handleScroll = () => {
       setScrollY(window.scrollY);
-      imageSequence.forEach((imageSrc: string) => {
+      imageSequence.forEach((imageSrc) => {
         const img = new Image();
         img.src = imageSrc;
       });
@@ -57,16 +58,16 @@ export default function Landing() {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSequence.length);
     }, 50);
 
-    const intervalId = setInterval(() => setSlideIndex((prev) => (prev + 1) % 3), 4000);
+    const intervalId = setInterval(() => setSlideIndex((prev) => (prev + 1) % 3), 1000);
 
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      clearInterval(intervalId);
+      if (intervalId) clearInterval(intervalId);
       clearInterval(imageSequenceInterval);
     };
-  }, [imageSequence, imageSequence.length]);
+  }, [imageSequence]);
 
   const handlScrollDegree = (page = 1, weight = 1) => {
     if (((scrollY
@@ -221,9 +222,9 @@ export default function Landing() {
           </span>
           <div className={styles['section2-4__explain']}>
             <div className={styles['section2-4__explain--info']}>
-              <img style={{ opacity: !isMobile || slideIndex === 0 ? 1 : 0 }} src={LandingMain} alt="main" />
-              <img style={{ opacity: !isMobile || slideIndex === 1 ? 1 : 0 }} src={LandingList} alt="list" />
-              <img style={{ opacity: !isMobile || slideIndex === 2 ? 1 : 0 }} src={LandingSummary} alt="summary" />
+              <img style={{ opacity: !isMobile || slideIndex === 0 ? 1 : 0 }} src={LandingMain} alt="main.png" />
+              <img style={{ opacity: !isMobile || slideIndex === 1 ? 1 : 0 }} src={LandingList} alt="list.png" />
+              <img style={{ opacity: !isMobile || slideIndex === 2 ? 1 : 0 }} src={LandingSummary} alt="summary.png" />
             </div>
           </div>
         </div>

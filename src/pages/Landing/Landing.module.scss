@@ -257,7 +257,7 @@
       line-height: 1.5em;
 
       @include media.media-breakpoint-down(mobile) {
-        margin-top: 20px;
+        margin-top: 25px;
         font-size: 18px;
         word-break: keep-all;
         text-align: center;
@@ -320,7 +320,7 @@
       line-height: 1.5em;
 
       @include media.media-breakpoint-down(mobile) {
-        margin-top: 20px;
+        margin-top: 25px;
         font-size: 18px;
         transition: 1s;
         word-break: keep-all;
