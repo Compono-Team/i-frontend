@@ -6,8 +6,11 @@ const onRegReservation = (param: any) => {
     'X-CSRF-TOKEN': 'pSejtmJGmTswL8mwF5DBGXoF5ZHgCn4sonTNPtZf8bub_HM3lxTAgVojql4dTPCJL731Kkw8yKnTPx0BxkGsXeFvyYOvykUP',
   };
 
-  // Axios 요청에 헤더 추가
-  const response = axios.post('https://compno.com/v1/pre-reservation', { ...param }, { headers });
+  const config = {
+    headers,
+  };
+
+  const response = axios.post('https://compno.com/api/v1/pre-reservation', { ...param }, config);
 
   return response;
 };

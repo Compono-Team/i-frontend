@@ -330,7 +330,6 @@ export default function Landing() {
             onClick={() => navigate('/application')}
           >
             서비스 출시 알림 받기
-
           </button>
         </div>
       </div>
