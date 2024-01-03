@@ -137,7 +137,7 @@ export default function Landing() {
           </span>
           <div
             className={styles['section2-2__phrase']}
-            style={{ opacity: handlScrollDegree(1.05) === 1 ? 1 : 0 }}
+            style={{ opacity: handlScrollDegree(0.9) === 1 ? 1 : 0 }}
           >
             시간은 공간의 흐름이고,
             {isMobile ? '\n' : ' '}
@@ -175,7 +175,7 @@ export default function Landing() {
 
         <div className={styles['section2-3']}>
           <span style={{
-            opacity: handlScrollDegree(1.5),
+            opacity: handlScrollDegree(1.8),
             justifyContent: 'flex-start',
           }}
           >
@@ -193,7 +193,7 @@ export default function Landing() {
             style={{ opacity: handlScrollDegree(1.55) === 1 ? 1 : 0 }}
           >
             모든 시간을 정의하고 정리하다.
-            <div style={{ opacity: handlScrollDegree(1.6) === 1 ? 1 : 0 }}>
+            <div style={{ opacity: handlScrollDegree(1.7) === 1 ? 1 : 0 }}>
               시간은 때와 그 사이로 정의됩니다.
               {'\n'}
               시점의 유실물까지 한 데 모아
