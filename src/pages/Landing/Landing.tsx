@@ -61,29 +61,7 @@ export default function Landing() {
     return 1;
   };
 
-  const preloadFont = (fontPath: string) => {
-    const link = document.createElement('link');
-    link.href = fontPath;
-    link.rel = 'preload';
-    link.as = 'font';
-    link.type = 'font/woff2';
-    link.crossOrigin = 'anonymous';
-    document.head.appendChild(link);
-  };
-
   useLayoutEffect(() => {
-    const fontList = [
-      '/static/fonts/Anybody_Expanded-ExtraBold.woff2',
-      '/static/fonts/Anybody-ExtraBold.woff2',
-      '/static/fonts/Pretendard-Black.woff2',
-      '/static/fonts/Pretendard-Bold.woff2',
-      '/static/fonts/Pretendard-ExtraBold.woff2',
-      '/static/fonts/Pretendard-Medium.woff2',
-      '/static/fonts/Pretendard-Regular.woff2',
-    ];
-
-    fontList.forEach(preloadFont);
-
     Array.from({ length: imageCount }, (_, i) => `/videos/Image_Sequence/${String(i + 1).padStart(4, '0')}.png`).forEach((imageSrc) => {
       const img = new Image();
       img.src = imageSrc;
