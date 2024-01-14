@@ -1,0 +1,157 @@
+@use 'src/utils/styles/mediaQuery' as media;
+
+@keyframes fade-down {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  90% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+.init {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  background-color: #ffffff;
+
+  &--hidden {
+    transition: 0.5s;
+    top: -100%;
+  }
+  
+  &__phrase {
+    width: 100%;
+    font-family: Anybody;
+    font-size: 140px;
+    font-weight: 800;
+    text-align: center;
+    white-space: pre-wrap;
+
+    @include media.media-breakpoint-down(mobile) {
+      font-size: 42px;
+    }
+    
+    span {
+      width: 100%;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    width: 46px;
+    bottom: 10%;
+    animation: fade-down 2s ease-in-out infinite;
+    cursor: pointer;
+  }
+}
+
+.request {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.progress {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 74px;
+  gap: 12px;
+  top: 0;
+  list-style: none;
+
+  &__dot {
+    width: 16px;
+    height: 16px;
+    background-color: #CDCFD5;
+    border-radius: 100px;
+    border: none;
+    transition: 0.3s;
+
+    &--active {
+      background-color: #1c1d1f;
+    }
+  }
+}
+
+.input {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
+  margin-bottom: 13px;
+  opacity: 1;
+  overflow: hidden;
+  transition: 1s;
+  
+
+  &--disable {
+    opacity: 0;
+    height: 0;
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 700;
+    gap: 8px;
+    transition: 0.5s;
+
+    &--now {
+      color: #222426;
+    }
+
+    &--before {
+      color: #222426;
+    }
+
+    &--entire {
+      color: #9f9fab;
+    }
+  }
+
+  &__input {
+    width: 750px;
+    height: 64px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 12px;
+    background-color: #f1f1f1;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 400;
+    margin: 12px 0 5px;
+  }
+
+  &__warning {
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ff7373;
+  }
+}
