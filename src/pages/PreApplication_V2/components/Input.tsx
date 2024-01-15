@@ -36,7 +36,10 @@ export default function Input({
         <span className={styles['input__step--entire']}>04</span>
       </div>
       <input
-        className={styles.input__input}
+        className={cn({
+          [styles.input__input]: true,
+          [styles['input__input--error']]: !!errors[field],
+        })}
         type="text"
         placeholder={placeholder}
         {...register(`${field}`, {

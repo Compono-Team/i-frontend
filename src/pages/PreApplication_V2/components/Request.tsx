@@ -1,6 +1,6 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { useState } from 'react';
-import { NAME_REGEXP, PHONE_REGEXP } from 'static/RegExp';
+import { PHONE_REGEXP } from 'static/RegExp';
 import styles from '../PreApplicationV2.module.scss';
 import Progress from './Progress';
 import Input from './Input';
@@ -31,12 +31,22 @@ export default function Request() {
             setProgression={setProgression}
             field="name"
             placeholder="* 이름을 작성해 주세요.  ex)홍길동"
-            regExp={NAME_REGEXP}
+            regExp={/^.{2,20}$/}
             message="※정확한 내용을 적어주셔야 제출하실 수 있습니다."
             error={errors.name?.message}
           />
           <Input
             step={2}
+            progression={progression}
+            setProgression={setProgression}
+            field="phoneNumber"
+            placeholder="* 연락처를 적어주세요. ex)010-xxxx-xxxx"
+            regExp={PHONE_REGEXP}
+            message="※정확한 내용을 적어주셔야 제출하실 수 있습니다."
+            error={errors.phoneNumber?.message}
+          />
+          <Input
+            step={3}
             progression={progression}
             setProgression={setProgression}
             field="phoneNumber"

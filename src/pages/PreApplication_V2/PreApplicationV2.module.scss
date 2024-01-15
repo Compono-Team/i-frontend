@@ -121,7 +121,8 @@
     transition: 0.5s;
 
     &--now {
-      color: #222426;
+      transition: 0.5s;
+      color: #6f757b;
     }
 
     &--before {
@@ -144,6 +145,11 @@
     text-align: center;
     font-weight: 400;
     margin: 12px 0 5px;
+    border: none;
+
+    &--error {
+      outline: 1px solid #FF7373;
+    }
   }
 
   &__warning {
