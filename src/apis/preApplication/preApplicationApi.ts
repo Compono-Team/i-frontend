@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_PATH, CSRF_TOKEN } from 'config/constatnts';
 
 const preApplicationApi = axios.create({
-  baseURL: `${API_PATH}/v1/pre-reservation`,
+  baseURL: `${API_PATH}/pre-reservation`,
   headers: {
     'Content-Type': 'application/json;charset=UTF-8',
     'X-CSRF-TOKEN': `${CSRF_TOKEN}`,

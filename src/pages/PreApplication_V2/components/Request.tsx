@@ -1,12 +1,16 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { useState } from 'react';
-import { PHONE_REGEXP } from 'static/RegExp';
+import { EMAIL_REGEXP, PHONE_REGEXP } from 'static/RegExp';
 import styles from '../PreApplicationV2.module.scss';
 import Progress from './Progress';
 import Input from './Input';
 import { ApplicationFormParams } from '../type';
+import Terms from './Terms';
+import usePreApplication from '../hooks/usePreApplication';
 
 export default function Request() {
+  const { preRegister } = usePreApplication();
+  console.log('preRegister:', preRegister);
   const [progression, setProgression] = useState<number>(1);
   const methods = useForm<ApplicationFormParams>({
     mode: 'onChange',
@@ -24,7 +28,10 @@ export default function Request() {
     <div className={styles.request}>
       <Progress progression={progression} />
       <FormProvider {...methods}>
-        <form onSubmit={handleSubmit(() => console.log('hi'))}>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit((data) => preRegister(data))}
+        >
           <Input
             step={1}
             progression={progression}
@@ -49,35 +56,22 @@ export default function Request() {
             step={3}
             progression={progression}
             setProgression={setProgression}
-            field="phoneNumber"
-            placeholder="* 연락처를 적어주세요. ex)010-xxxx-xxxx"
-            regExp={PHONE_REGEXP}
+            field="email"
+            placeholder="* 이메일을 작성해 주세요. ex)abs2333@naver.com"
+            regExp={EMAIL_REGEXP}
             message="※정확한 내용을 적어주셔야 제출하실 수 있습니다."
-            error={errors.phoneNumber?.message}
+            error={errors.email?.message}
           />
+          <Input
+            step={4}
+            progression={progression}
+            setProgression={setProgression}
+            field="expectation"
+            placeholder="* 이메일을 작성해 주세요. ex)abs2333@naver.com"
+          />
+          {progression >= 4 && <Terms />}
         </form>
       </FormProvider>
-      {/* <section className={styles.input}>
-        <div className={styles.input__step}>
-          <span className={cn({
-            [styles['input__step--now']]: true,
-          })}
-          >
-            01
-          </span>
-          <span className={styles['input__step--entire']}>/</span>
-          <span className={styles['input__step--entire']}>04</span>
-        </div>
-        <input
-          className={styles.input__input}
-          type="text"
-          placeholder="* 이름을 작성해 주세요. ex)홍길동"
-          {...register('name', { required: true })}
-        />
-        <div className={styles.input__warning}>
-          * 정확한 내용을 적어주셔야 제출하실 수 있습니다.
-        </div>
-      </section> */}
     </div>
   );
 }

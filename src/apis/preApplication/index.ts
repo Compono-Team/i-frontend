@@ -1,5 +1,5 @@
-import { PreApplicationParams } from './type';
+import { PreApplicationParams, PreApplicationResponse } from './type';
 import preApplicationApi from './preApplicationApi';
 
 // eslint-disable-next-line import/prefer-default-export
-export const postPreApplication = (params:PreApplicationParams) => preApplicationApi.post('', params);
+export const postPreApplication = (params:PreApplicationParams) => preApplicationApi.post<PreApplicationResponse>('', params);
