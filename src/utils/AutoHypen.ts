@@ -1,6 +1,6 @@
 interface Params {
   event:React.ChangeEvent<HTMLInputElement>;
-  setPhoneNumber:React.Dispatch<React.SetStateAction<string>>;
+  setPhoneNumber:Function;
 }
 
 export default function AutoHypen({ event, setPhoneNumber }:Params) {

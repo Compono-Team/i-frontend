@@ -18,3 +18,10 @@ export interface AxiosError {
     }
   }
 }
+
+export interface ModalData {
+  title:string;
+  content:string;
+  isOpen:boolean;
+  action:Function;
+}

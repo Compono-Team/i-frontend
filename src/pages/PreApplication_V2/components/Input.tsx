@@ -2,6 +2,7 @@ import cn from 'utils/ClassName';
 import { useFormContext } from 'react-hook-form';
 import { useState } from 'react';
 import styles from '../PreApplicationV2.module.scss';
+import Terms from './Terms';
 
 interface Props {
   step: number;
@@ -12,10 +13,11 @@ interface Props {
   regExp?: RegExp;
   message?: string;
   error?:string;
+  onChange?:Function;
 }
 
 export default function Input({
-  step, progression, setProgression, field, placeholder = '', regExp = /^./, message = '※정확한 내용을 적어주셔야 제출하실 수 있습니다.', error = '',
+  step, progression, setProgression, field, placeholder = '', regExp = /^./, message = '※정확한 내용을 적어주셔야 제출하실 수 있습니다.', error = '', onChange = () => {},
 }:Props) {
   const { register, setError, formState: { errors } } = useFormContext();
   const [isFocus, setIsFocus] = useState(false);
@@ -60,6 +62,7 @@ export default function Input({
               onChange: (event) => {
                 if (progression === step && !errors[field]
               && event.target.value.length !== 0) { setProgression(step + 1); }
+                onChange(event);
               }
               ,
             })}
@@ -68,14 +71,17 @@ export default function Input({
         </>
       )}
       {step === 4 && (
-        <textarea
-          className={styles.input__textarea}
-          placeholder={isFocus ? '' : placeholder}
-          onFocus={() => setIsFocus(true)}
-          {...register(`${field}`, {
-            onBlur: () => setIsFocus(false),
-          })}
-        />
+        <>
+          <textarea
+            className={styles.input__textarea}
+            placeholder={isFocus ? '' : placeholder}
+            onFocus={() => setIsFocus(true)}
+            {...register(`${field}`, {
+              onBlur: () => setIsFocus(false),
+            })}
+          />
+          <Terms />
+        </>
       )}
     </section>
   );
