@@ -81,7 +81,7 @@ export default function Request() {
             progression={progression}
             setProgression={setProgression}
             field="expectation"
-            placeholder="* 이메일을 작성해 주세요. ex)abs2333@naver.com"
+            placeholder="하고 싶은 말을 작성해 주세요. (선택사항)"
           />
         </form>
       </FormProvider>
