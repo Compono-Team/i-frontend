@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { cloneDeep } from 'lodash-es';
 import styles from '../PreApplication.module.scss';
 import { InputText } from '../type/type';

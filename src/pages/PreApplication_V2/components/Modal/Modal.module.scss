@@ -1,0 +1,90 @@
+@use 'src/utils/styles/mediaQuery' as media;
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+}
+
+.template {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0000008a;
+  z-index: 999;
+}
+
+.modal {
+  position: relative;
+  width: 500px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 15px;
+  animation: slide-in 0.5s linear;
+  padding-bottom: 60px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 90%;
+  }
+
+  &--close {
+    animation: slide-out 0.2s linear;
+  }
+
+  &__title {
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__content {
+    font-size: 20px;
+    margin: 50px 0 20px;
+  }
+
+  &__close {
+    position: absolute;
+    bottom: 10px;
+    width: 90%;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #000000;
+    transition: 0.5s;
+    border: 1px solid;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #666666;
+    }
+  }
+}
