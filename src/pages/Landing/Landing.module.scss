@@ -168,9 +168,16 @@
   
   &__logo {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     height: 70vh;
-    margin-top: -210px;
     z-index: 1;
+
+    img {
+      width: auto;
+      height: 100%;
+    }
 
     @include media.media-breakpoint-down(mobile) {
       width: auto;
@@ -236,7 +243,7 @@
     word-break: keep-all;
 
     @include media.media-breakpoint-down(mobile) {
-      font-size: 24px;
+      font-size: 28px;
       white-space: pre-wrap;
     }
 
@@ -250,9 +257,11 @@
       line-height: 1.5em;
 
       @include media.media-breakpoint-down(mobile) {
-        font-size: 20px;
+        margin-top: 25px;
+        font-size: 18px;
         word-break: keep-all;
-        text-align: center
+        text-align: center;
+        transition: 1s;
       }
     }
   }
@@ -269,7 +278,7 @@
   @include media.media-breakpoint-down(mobile) {
     font-size: 40px;
     word-break: keep-all;
-    text-align: center
+    text-align: center;
   }
   
   &__sub {
@@ -281,19 +290,19 @@
     @include media.media-breakpoint-down(mobile) {
       font-size: 24px;
       word-break: keep-all;
-      text-align: center
+      text-align: center;
     }
   }
 
   &__phrase {
     margin-top: 90px;
     font-weight: 750;
-    font-size: 44px;
+    font-size: 48px;
     transition: 0.5s;
     word-break: keep-all;
 
     @include media.media-breakpoint-down(mobile) {
-      font-size: 24px;
+      font-size: 28px;
       white-space: pre-wrap;
     }
 
@@ -311,9 +320,11 @@
       line-height: 1.5em;
 
       @include media.media-breakpoint-down(mobile) {
-        font-size: 20px;
+        margin-top: 25px;
+        font-size: 18px;
+        transition: 1s;
         word-break: keep-all;
-        text-align: center
+        text-align: center;
       }
     }
   }
@@ -498,7 +509,7 @@
 
   @include media.media-breakpoint-down(mobile) {
     flex-direction: column;
-    justify-content: center;
+    // justify-content: space-around;
   }
 
   &__photo {
@@ -548,6 +559,8 @@
       width: 90%;
       height: 80%;
     }
+  }
+  
   &__phrase {
     display: flex;
     flex-direction: column;
@@ -560,38 +573,11 @@
     @include media.media-breakpoint-down(mobile) {
     font-size: 24px;
     align-items: center;
-    margin-top: -180px
-      }  
-    }
+    margin-top: 20px;
+    }  
   }
 }
-  // &__phrase {
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 24px;
-  //   font-size: 40px;
-  //   font-weight: 700;
-  //   color: #ffffff;
-  //   white-space: pre-wrap;
-    
-  //   @include media.media-breakpoint-down(mobile) {
-  //     font-size: 24px;
-  //     align-items: center;
-  //   }  
-    
-  //   div {
-  //     white-space: pre-wrap;
-  //     font-size: 28px;
-  //     font-weight: 400;
-  //     text-align: start;
-  //     line-height: 1.5em;
-
-  //     @include media.media-breakpoint-down(mobile) {
-  //       text-align: center;
-  //       font-size: 16px;
-  //     }    
-  //   }
-  // }  
+ 
 .section3-4 {
   @include section;
 

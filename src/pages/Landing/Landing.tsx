@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import {
+  useState, useEffect, useRef, useLayoutEffect,
+} from 'react';
 import cn from 'utils/ClassName';
 import useMediaQuery from 'hooks/useMediaQuery';
 import Logo from 'static/image/Logo/logo_white_trans.png';
@@ -21,52 +23,30 @@ export default function Landing() {
   const [slideIndex, setSlideIndex] = useState<number>(0);
   const firstRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState<number>(0);
-
   const imageCount: number = 260;
-  const imageSequence: string[] = Array.from({ length: imageCount }, (_, i) => `/videos/Image_Sequence/${String(i + 1).padStart(4, '0')}.png`);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const landingVideoImages = Array.from({ length: imageCount }, (_, i) => `/videos/Image_Sequence/${String(i + 1).padStart(4, '0')}.png`);
 
   useEffect(() => {
-    const fontPaths = [
-      '/static/fonts/Anybody_Expanded-ExtraBold.woff2',
-      '/static/fonts/Anybody-ExtraBold.woff2',
-      '/static/fonts/Pretendard-Black.woff2',
-      '/static/fonts/Pretendard-Bold.woff2',
-      '/static/fonts/Pretendard-ExtraBold.woff2',
-      '/static/fonts/Pretendard-Medium.woff2',
-      '/static/fonts/Pretendard-Regular.woff2',
-    ];
-    fontPaths.forEach((fontPath) => {
-      const link = document.createElement('link');
-      link.href = fontPath;
-      link.rel = 'preload';
-      link.as = 'font';
-      link.type = 'font/woff2';
-      link.crossOrigin = 'anonymous';
-      document.head.appendChild(link);
-    });
+    const imageSequence = Array.from({ length: imageCount }, (_, i) => `/videos/Image_Sequence/${String(i + 1).padStart(4, '0')}.png`);
+    const intervalId = setInterval(() => setSlideIndex((prev) => (prev + 1) % 3), 3000);
+
     const handleScroll = () => {
       setScrollY(window.scrollY);
-      imageSequence.forEach((imageSrc: string) => {
-        const img = new Image();
-        img.src = imageSrc;
-      });
     };
 
     const imageSequenceInterval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSequence.length);
     }, 50);
 
-    const intervalId = setInterval(() => setSlideIndex((prev) => (prev + 1) % 3), 4000);
-
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      clearInterval(intervalId);
       clearInterval(imageSequenceInterval);
+      clearInterval(intervalId);
     };
-  }, [imageSequence, imageSequence.length]);
+  }, []);
 
   const handlScrollDegree = (page = 1, weight = 1) => {
     if (((scrollY
@@ -80,6 +60,13 @@ export default function Landing() {
 
     return 1;
   };
+
+  useLayoutEffect(() => {
+    Array.from({ length: imageCount }, (_, i) => `/videos/Image_Sequence/${String(i + 1).padStart(4, '0')}.png`).forEach((imageSrc) => {
+      const img = new Image();
+      img.src = imageSrc;
+    });
+  }, []);
 
   return (
     <div className={styles.template}>
@@ -97,12 +84,14 @@ export default function Landing() {
         <span>
           All the time
         </span>
+        {window.scrollY === 0 && (
         <div className={styles.section1__logo}>
           <img
-            src={imageSequence[currentImageIndex]}
+            src={landingVideoImages[currentImageIndex]}
             alt={`Frame ${currentImageIndex}`}
           />
         </div>
+        )}
         <span className={styles.section1__front}>
           All-ganize
         </span>
@@ -137,7 +126,7 @@ export default function Landing() {
           </span>
           <div
             className={styles['section2-2__phrase']}
-            style={{ opacity: handlScrollDegree(1.05) === 1 ? 1 : 0 }}
+            style={{ opacity: handlScrollDegree(0.9) === 1 ? 1 : 0 }}
           >
             시간은 공간의 흐름이고,
             {isMobile ? '\n' : ' '}
@@ -175,7 +164,7 @@ export default function Landing() {
 
         <div className={styles['section2-3']}>
           <span style={{
-            opacity: handlScrollDegree(1.5),
+            opacity: handlScrollDegree(1.8),
             justifyContent: 'flex-start',
           }}
           >
@@ -193,7 +182,7 @@ export default function Landing() {
             style={{ opacity: handlScrollDegree(1.55) === 1 ? 1 : 0 }}
           >
             모든 시간을 정의하고 정리하다.
-            <div style={{ opacity: handlScrollDegree(1.6) === 1 ? 1 : 0 }}>
+            <div style={{ opacity: handlScrollDegree(1.7) === 1 ? 1 : 0 }}>
               시간은 때와 그 사이로 정의됩니다.
               {'\n'}
               시점의 유실물까지 한 데 모아
@@ -221,9 +210,9 @@ export default function Landing() {
           </span>
           <div className={styles['section2-4__explain']}>
             <div className={styles['section2-4__explain--info']}>
-              <img style={{ opacity: !isMobile || slideIndex === 0 ? 1 : 0 }} src={LandingMain} alt="main" />
-              <img style={{ opacity: !isMobile || slideIndex === 1 ? 1 : 0 }} src={LandingList} alt="list" />
-              <img style={{ opacity: !isMobile || slideIndex === 2 ? 1 : 0 }} src={LandingSummary} alt="summary" />
+              <img style={{ opacity: !isMobile || slideIndex === 0 ? 1 : 0 }} src={LandingMain} alt="main.png" />
+              <img style={{ opacity: !isMobile || slideIndex === 1 ? 1 : 0 }} src={LandingList} alt="list.png" />
+              <img style={{ opacity: !isMobile || slideIndex === 2 ? 1 : 0 }} src={LandingSummary} alt="summary.png" />
             </div>
           </div>
         </div>
